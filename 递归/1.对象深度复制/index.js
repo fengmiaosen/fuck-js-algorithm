@@ -1,34 +1,3 @@
-// 递归步骤：
-
-// 寻找出口，递归一定有一个出口，锁定出口，保证不会死循环
-// 递归条件，符合递归条件，自己调用自己。
-
-function cloneDeep(obj, target) {
-
-    target = target || {};
-
-    if (!obj) {
-        target = obj;
-    } else if (typeof obj === 'object') {
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-
-                if (Array.isArray(obj[key])) {
-                    target[key] = [];
-                    cloneDeep(obj[key], target[key]);
-                } else if (typeof obj[key] === 'object' && !obj[key]) {
-                    target[key] = {};
-                    cloneDeep(obj[key], target[key]);
-                } else {
-                    target[key] = obj[key];
-                }
-
-            }
-        }
-    }
-
-    return target;
-}
 
 // 手写实现深拷贝
 function checkedType(target) {

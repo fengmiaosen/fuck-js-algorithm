@@ -18,25 +18,3 @@ function setArr(arr){
 
 console.log('arr1:', setArr(arr));
 
-// 方法二
-// 拍平
-function flat(arr){
-    let resArr = [];
-
-    arr.forEach(item => {
-        if(Array.isArray(item)){
-            resArr = resArr.concat(flat(item));
-        } else {
-            resArr.push(item);
-        }
-    });
-
-    return resArr;
-}
-
-// 去重
-function uniq(arr){
-    return [...new Set(arr)];
-}
-
-console.log('arr2:', uniq(flat(arr)));

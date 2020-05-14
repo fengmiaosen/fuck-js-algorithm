@@ -14,16 +14,16 @@ function add(x, y, z) {
 /**
  * 
  * @param {function} fn 
- * @param  {...any} params 
+ * @param  {...any} args 
  */
-function curry(fn, ...params) {
+function curry(fn, ...args) {
 
-    if (params.length >= fn.length) {
-        return fn.apply(this, params);
+    if (args.length >= fn.length) {
+        return fn.apply(this, args);
     }
 
     return function () {
-        return curry(fn, ...params, ...arguments)
+        return curry(fn, ...args, ...arguments)
     }
 }
 

@@ -62,7 +62,6 @@ function fn(list, id) {
 
 /**
  * 方法二：DFS、栈、回溯
- * 典型的回溯算法（DFS)
  * @param {*} list 
  * @param {*} value 
  */
