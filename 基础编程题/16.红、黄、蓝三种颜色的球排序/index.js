@@ -8,6 +8,7 @@ function getNumByType(type) {
             return 1
         case '红':
             return 2
+        case '蓝':
         default:
             return 3
     }

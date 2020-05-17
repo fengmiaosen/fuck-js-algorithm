@@ -1,3 +1,5 @@
+// https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/25
+
 // 目标类
 class Subject {
     constructor() {
