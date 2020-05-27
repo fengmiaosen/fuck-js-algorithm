@@ -25,6 +25,9 @@ Promise.prototype.finally = function (cb) {
 
 //方法2 简洁版
 // https://github.com/matthew-andrews/Promise.prototype.finally/blob/master/finally.js
+// 为什么需要Promise.resolve(callback()).then(() => value)
+// 因为callback如果是个异步操作，返回promise呢.希望等callback执行完再接着执行
+
 Promise.prototype.finally = function (callback) {
     let P = this.constructor;
 
