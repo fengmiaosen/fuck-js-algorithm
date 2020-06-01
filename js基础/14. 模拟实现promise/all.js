@@ -27,9 +27,10 @@ function promiseAll(promises) {
     });
 }
 
-var p1=Promise.resolve(1),
-p2=Promise.resolve(2),
-p3=Promise.resolve(3);
-promiseAll([p1,p2,p3]).then(function(value){
-console.log(value)
+var p1 = Promise.resolve(1),
+    p2 = Promise.resolve(2),
+    p3 = Promise.resolve(3);
+    
+promiseAll([p1, p2, p3]).then(function (value) {
+    console.log(value)
 })
