@@ -1,0 +1,1 @@
+<!-- 继续在Promise中实例化Promise，其输出依然会早于setTimeout的宏任务 -->
