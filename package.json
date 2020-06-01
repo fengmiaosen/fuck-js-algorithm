@@ -1,0 +1,22 @@
+{
+  "name": "fuck-js-algorithm",
+  "version": "1.0.0",
+  "description": "JavaScript算法学习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://fengmiaosen@github.com/fengmiaosen/fuck-js-algorithm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fengmiaosen/fuck-js-algorithm/issues"
+  },
+  "homepage": "https://github.com/fengmiaosen/fuck-js-algorithm#readme",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
