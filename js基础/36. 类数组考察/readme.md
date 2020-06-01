@@ -1,8 +1,47 @@
-看文档：
-1：push 方法根据 length 属性来决定从哪里开始插入给定的值。
-2：push 是特意设计为通用的，Array.prototype.push 可以在一个对象上工作。
+js 类数组对象
 
-解析：
-原题 length = 2。所以当然从第三个开始push，而obj中index为2和3的都被占用了。自然会替换掉。
+    https://juejin.im/post/5be561a6f265da613f2efb73
 
-所以：很得到的答案很明显。
+    > 类数组对象，就是指可以`通过索引属性访问元素`并且拥有` length 属性`的对象
+
+    ```
+    var arrLike = {
+      0: 'name',
+      1: 'age',
+      2: 'job',
+      length: 3
+    }
+    ```
+
+    * 类数组对象与数组的区别
+
+        * 类数组对象不能直接使用数组的方法
+
+    * 如果类数组对象能够和数组一样使用数组的方法，应该怎么做
+
+    ```js
+    // 使用 call
+    Array.prototype.push.call(arrLike, 'hobby');
+    console.log(arrLike); // { '0': 'name', '1': 'age', '2': 'job', '3': 'hobby', length: 4 }
+
+    var arrLikeStr = Array.prototype.join.call(arrLike, '&')
+    console.log(arrLikeStr); // name&age&job&hobby
+
+    // 使用 apply
+    Array.prototype.push.apply(arrLike, ['hobby']);
+    console.log(arrLike); // { '0': 'name', '1': 'age', '2': 'job', '3': 'hobby', length: 4 }
+
+    var arrLikeStr = Array.prototype.join.apply(arrLike, ['&'])
+    console.log(arrLikeStr); // name&age&job&hobby
+    ```
+
+    * 把类数组对象转换成真正的数组
+
+    > 通过 `Array.prototype.slice` 或 `Array.prototype.splice`
+
+    ```js
+    // 使用 call
+    console.log(Array.prototype.slice.call(arrLike,0));
+    console.log(Array.prototype.splice.call(arrLike,0));  // 会改变原先的类数组对象
+
+    ```
