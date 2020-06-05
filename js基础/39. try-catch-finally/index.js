@@ -30,7 +30,7 @@ function test2() {
 }
 
 console.log('test2 =======');
-console.log(test2()); // 1 2 from_finally
+console.log(test2());
 
 function test3() {
     try {
@@ -45,4 +45,25 @@ function test3() {
 }
 
 console.log('test3 ======');
-console.log(test3()); // 1 throw 2 from_catch
+console.log(test3()); 
+
+function test4() {
+    function fn(){
+        console.log('run fn');
+        return 'return fn';
+    }
+
+    try {
+        console.log(1);
+        return fn();
+
+    } catch (e) {
+        console.log(e.message);
+        return 'from_catch';
+    } finally {
+        console.log(2);
+    }
+}
+
+console.log('test4 ======');
+console.log(test4());
