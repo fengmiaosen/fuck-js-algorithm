@@ -1,7 +1,7 @@
 //https://github.com/camsong/blog/issues/9
 
 /**
- * 精确加法
+ * 小数的精确加法
  */
 function add(num1, num2) {
   const num1Digits = (num1.toString().split('.')[1] || '').length;

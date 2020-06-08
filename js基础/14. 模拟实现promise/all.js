@@ -3,7 +3,7 @@ function promiseAll(promises) {
 
     return new Promise((resolve, reject) => {
         if (!Array.isArray(promises)) {
-            return reject(new TypeError("argument must be anarray"))
+            return reject(new TypeError("argument must be an array"))
         }
 
         let len = promises.length;
