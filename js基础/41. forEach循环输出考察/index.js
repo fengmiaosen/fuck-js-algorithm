@@ -11,7 +11,6 @@ const square = num => {
 
 // // 原题目
 // //forEach是不能阻塞的，默认是请求并行发起，所以是同时输出1、4、9。
-// 原理参照 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 // function test() {
 //   list.forEach(async x=> {
 //     const res = await square(x)
