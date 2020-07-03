@@ -8,19 +8,14 @@
 
 // 这题如果maxNum 为无限大，其实就是在让你实现Promise.all
 // 如果是有一个失败就返回 就是Promise.race
-    
+
 function multiRequest(urls = [], maxNum) {
     let result = new Array(urls.length).fill(false)
     let sum = urls.length; //总数
     let count = 0;        //已完成数
 
     return new Promise((resolve, reject) => {
-        
-        //先请求maxNum个呗    
-        while (count < maxNum) {
-            next()
-        }
-        
+
         function next() {
             let current = count++
             // 边界
@@ -43,12 +38,17 @@ function multiRequest(urls = [], maxNum) {
                 }
             }).catch((err) => {
                 console.log("结束：" + current, new Date().toLocaleString());
-                
+
                 result[current] = err
                 if (current < sum) {
                     next()
                 }
             })
+        }
+
+        //先请求maxNum个呗    
+        while (count < maxNum) {
+            next()
         }
 
     })
