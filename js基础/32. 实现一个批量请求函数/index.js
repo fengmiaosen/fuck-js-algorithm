@@ -7,7 +7,8 @@
 // 所有请求完成后，结果按照 urls 里面的顺序依次打出
 
 // 这题如果maxNum 为无限大，其实就是在让你实现Promise.all
-// 如果是有一个失败就返回 就是Promise.race    
+// 如果是有一个失败就返回 就是Promise.race
+    
 function multiRequest(urls = [], maxNum) {
     let result = new Array(urls.length).fill(false)
     let sum = urls.length; //总数
@@ -53,7 +54,20 @@ function multiRequest(urls = [], maxNum) {
     })
 }
 let url2 = `https://api.github.com/search/users?q=d`;
-let arr = new Array(100).fill(url2)
+let arr = new Array(28).fill(url2).map((item, idx) => `${item}&idx=${idx}`)
+
 multiRequest(arr, 10).then((res) => {
     console.log(res)
 })
+
+function fetch(url) {
+    return new Promise(resolve => {
+        // console.log(`start request ${url}`);
+        const timeout = parseInt(Math.random() * 5000);
+
+        setTimeout(() => {
+            // console.log(`end request ${url}`);
+            resolve(url)
+        }, timeout)
+    })
+};
