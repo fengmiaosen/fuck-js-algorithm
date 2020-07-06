@@ -13,7 +13,7 @@ var arr4 = arr3.sort();
 console.log('arr4 old:', arr4);
 
 var res = arr4.sort((a,b) => {
-    if(a.charAt(0) === b.charAt(0) && a.length > b.length){
+    if(a[0] === b[0] && a.length > b.length){
         return -1;
     } else {
         return 1;
