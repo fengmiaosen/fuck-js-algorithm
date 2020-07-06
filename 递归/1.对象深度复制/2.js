@@ -63,3 +63,27 @@ function cloneObj(obj, map = new WeakMap()) {
 
     return target;
 }
+
+
+let obj = {
+    a: {
+        a_bfff_x: [
+            1,
+            {
+                c: 2
+            }
+        ]
+    },
+    x_booo: 1,
+    y: [
+        {
+            a_yppp: 22,
+            b: null,
+            c: {
+                d: [12, 34, 67]
+            }
+        }
+    ]
+};
+
+console.log('clone obj:', JSON.stringify(cloneObj(obj)));
