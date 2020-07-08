@@ -1,6 +1,6 @@
 // 比如有个数组有100K个元素，从中不重复随机选取10K个元素
 
-const max_length = 10000;
+const max_length = 100000;
 const source = Array.from({ length: max_length }).map((item, i) => i);
 
 // console.log('array source:', source);
@@ -27,6 +27,10 @@ function func(source, length) {
     return result;
 }
 
-const result = func(source, 10);
+console.time('array');
+
+const result = func(source, 100);
+
+console.timeEnd('array');
 
 console.log('random array:', result);
