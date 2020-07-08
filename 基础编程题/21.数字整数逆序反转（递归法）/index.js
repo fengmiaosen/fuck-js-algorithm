@@ -7,16 +7,15 @@ function fun(num) {
     let lastNum = num % 10;
 
     // 除了最后一位的前几位
-    let num1 = num / 10;
+    let restNum = Math.floor(num / 10);
 
-    if (num1 < 1) {
+    if (restNum < 1) {
         return num;
     } else {
-        let num2 = Math.floor(num1);
-        let otherNum = fun(num2);
+        let otherNum = fun(restNum);
 
         return `${lastNum}${otherNum}`
     }
 }
 
-console.log('func num:', fun(12345));
+console.log('func num:', fun(123456789));
