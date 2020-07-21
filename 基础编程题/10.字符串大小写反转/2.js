@@ -1,17 +1,17 @@
 
 function convertString(str) {
 
-    const res = [];
+    let res = '';
 
     for (let i = 0; i < str.length; i++) {
         const char = str[i].toUpperCase() === str[i] ?
             str[i].toLowerCase() :
             str[i].toUpperCase();
 
-        res.push(char)
+        res = res + char;
     }
 
-    return res.join('');
+    return res;
 }
 
 let str = 'aBcDE';

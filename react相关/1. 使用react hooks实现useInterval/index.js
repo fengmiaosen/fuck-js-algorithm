@@ -19,3 +19,4 @@ function useInterval(callback, delay) {
       }
     }, [delay]);
   }
+

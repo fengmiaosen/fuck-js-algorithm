@@ -65,7 +65,7 @@ function cloneObj(obj, map = new WeakMap()) {
 /**
  * 方法二
  * 利用正则表达式替换转化为驼峰命名
- * @param {*} key 
+ * @param {string} key 
  */
 function formatKey(key) {
     if (key.length < 2 || !key.includes('_')) {
