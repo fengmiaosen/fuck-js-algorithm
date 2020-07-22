@@ -28,8 +28,6 @@ function convertStr(list) {
         map.set(list[i].id, list[i]);
     }
 
-    console.log('list map:', map);
-
     for (let item of list) {
         if (item.parentId == 0) {
             res.push(item);
