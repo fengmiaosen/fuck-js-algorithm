@@ -6,6 +6,7 @@
 function convert(str){
 
     return str.replace(/-\w/g, function(s){
+        console.log('replace s:', s);
         return s.slice(1).toUpperCase()
     })
 }
