@@ -10,8 +10,6 @@ function splitArray(arr) {
     // 去重
     arr = [...new Set(arr)];
 
-    console.log('arr:', arr);
-
     const res = [];
 
     let subRes = [arr[0]];

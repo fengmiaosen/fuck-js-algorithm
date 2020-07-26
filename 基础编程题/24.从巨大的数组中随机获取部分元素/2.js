@@ -1,12 +1,11 @@
 
 
-function randomSort(nums) {
-    const len = nums.length;
+function randomSort(nums, len) {
     const keys = new Set();
     const result = [];
 
     while (keys.size < len) {
-        const idx = Math.floor(len * Math.random());
+        const idx = Math.floor(nums.length * Math.random());
         keys.add(idx);
     }
 
@@ -20,4 +19,4 @@ function randomSort(nums) {
 
 let list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-console.log('random sort:', randomSort(list))
+console.log('random sort:', randomSort(list, 5))

@@ -1,8 +1,10 @@
-function reverseStr(str){
+function reverseStr(str) {
     var res = [];
 
-    for(const char of str){
-        var s = char.toLocaleUpperCase() === char ? char.toLocaleLowerCase() : char.toLocaleUpperCase();
+    for (const char of str) {
+        var s = char.toLocaleUpperCase() === char ?
+            char.toLocaleLowerCase() :
+            char.toLocaleUpperCase();
 
         res.push(s);
     }

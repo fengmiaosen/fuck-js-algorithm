@@ -11,8 +11,6 @@
 function normalize(str) {
     const arr = str.split(/[\[\]]/g).filter(item => !!item);
 
-    console.log('arr:', arr);
-
     let res = {};
 
     arr.reduce((acc, cur, idx) => {
