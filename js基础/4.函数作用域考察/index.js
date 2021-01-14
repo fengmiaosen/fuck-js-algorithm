@@ -1,8 +1,8 @@
 //非匿名自执行函数，函数名只读
-//参考 https://segmentfault.com/q/1010000002810093
+// 参考 https://segmentfault.com/q/1010000002810093
 var b = 10;
 (function b(){
-    b = 20;
+    b = 20; // 此段代码是无效的
     console.log(b); 
 })();
 

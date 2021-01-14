@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="65b3673d-7007-486a-adbd-6c0eba1cbd97" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/js基础/12.promise和async考察/2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/12.promise和async考察/3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/12.promise和async考察/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/13.微任务和宏任务/2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/13.微任务和宏任务/3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/13.微任务和宏任务/4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/13.微任务和宏任务/5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/13.微任务和宏任务/6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/13.微任务和宏任务/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/13.微任务和宏任务/index2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/13.微任务和宏任务/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/13.微任务和宏任务/setImmediate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/14. 模拟实现promise/all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/14. 模拟实现promise/finally.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/14. 模拟实现promise/race.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/14. 模拟实现promise/retry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/14. 模拟实现promise/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/18. 用 promise 实现请求超时功能/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/19. 自己实现 Symbol/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/2.节流和防抖/debounce.js" beforeDir="false" afterPath="$PROJECT_DIR$/js基础/2.节流和防抖/debounce.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/23.实现一个new/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/25. 实现instanceOf/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/26. 模拟Object.create/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/30. 转化为驼峰命名/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/32. promise实现一个批量请求函数/2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/32. promise实现一个批量请求函数/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/34. Promise怎么取消或中断/2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/34. Promise怎么取消或中断/3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/34. Promise怎么取消或中断/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/34. Promise怎么取消或中断/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/38. Promise异步缓存&amp;并发调度/requestCache.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/38. Promise异步缓存&amp;并发调度/requestLimit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/38. Promise异步缓存&amp;并发调度/requestScheduler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js基础/42. Promise 链式调用顺序/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/字符串/1. 删除字符串中出现次数 大于等于2 次的相邻字符/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/排序/1. 冒泡排序/2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/排序/1. 冒泡排序/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/递归/1.对象深度复制/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/递归/1.对象深度复制/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/递归/1.对象深度复制/index2.js" beforeDir="false" afterPath="$PROJECT_DIR$/递归/1.对象深度复制/index2.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1msognhUGaP3UAeD699HdhrUr6S" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="leetcode.id" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="[1]两数之和.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="/var/folders/46/h4759mz90_n3jfctgknd1tww0000gn/T/leetcode/editor/cn/[1]两数之和.js" working-dir="/var/folders/46/h4759mz90_n3jfctgknd1tww0000gn/T/leetcode/editor/cn">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.[1]两数之和.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="65b3673d-7007-486a-adbd-6c0eba1cbd97" name="默认的" comment="" />
+      <created>1610291772831</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610291772831</updated>
+      <workItem from="1610291776951" duration="264000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

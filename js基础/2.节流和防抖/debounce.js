@@ -1,14 +1,23 @@
-// 防抖
-function debounce(fn, delay){
+
+/**
+ * 防抖
+ * @param {*} fn 
+ * @param {*} delay 
+ * @param {*} immediate 
+ */
+function debounce(fn, delay, immediate) {
 
     let timer = null;
 
     return (...args) => {
+        if (immediate && !timer) {
+            fn.apply(this, args)
+        }
 
         timer && clearTimeout(timer);
 
         timer = setTimeout(() => {
-            fn.applay(this, args);
+            fn.apply(this, args);
         }, delay);
     };
 }

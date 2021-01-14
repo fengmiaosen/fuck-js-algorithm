@@ -1,11 +1,17 @@
-function compose(middleware) {
+/**
+ * 
+ * @param {array} middlewares 
+ */
+function compose(middlewares) {
 
-    if (!Array.isArray(middleware)) {
+    if (!Array.isArray(middlewares)) {
         throw new TypeError('Middleware stack must be an array!')
     }
 
-    for (const fn of middleware) {
-        if (typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions!')
+    for (const fn of middlewares) {
+        if (typeof fn !== 'function') {
+            throw new TypeError('Middleware must be composed of functions!')
+        }
     }
 
     /**
@@ -29,9 +35,9 @@ function compose(middleware) {
 
             index = i
 
-            let fn = middleware[i];
+            let fn = middlewares[i];
 
-            if (i === middleware.length) {
+            if (i === middlewares.length) {
                 fn = next
             }
 

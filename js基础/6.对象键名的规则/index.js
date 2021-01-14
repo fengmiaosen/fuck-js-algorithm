@@ -1,7 +1,8 @@
 
 // 对象的键名只能是字符串和 Symbol 类型。
 // 其他类型的键名会被转换成字符串类型。
-// 对象转字符串默认会调用 toString 方法。 对象类型会调用 toString 方法转换成字符串 [object Object]
+// 对象转字符串默认会调用 toString 方法
+// 对象类型会调用 toString 方法转换成字符串 [object Object]
 
 
 // example 1

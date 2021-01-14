@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fengmiaosen/fuck-js-algorithm#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "node-fetch": "^2.6.1"
   }
 }

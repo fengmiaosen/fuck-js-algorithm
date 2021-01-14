@@ -15,7 +15,7 @@ var obj = {
     'splice': Array.prototype.splice,
     'push': Array.prototype.push
 }
-obj.push(1)
-obj.push(2)
+obj.push(11)
+obj.push(22)
 console.log(obj)
 
