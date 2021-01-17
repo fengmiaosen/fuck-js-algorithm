@@ -13,6 +13,6 @@ function bubbleSort(arr) {
     return arr;
 }
 
-var arr = [1,3,2,6,4,7,9];
+var arr = [1, 3, 2, 6, 4, 7, 9, 8];
 
 console.log('bubble sort:', bubbleSort(arr));

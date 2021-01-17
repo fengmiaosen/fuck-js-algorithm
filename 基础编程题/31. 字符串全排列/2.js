@@ -5,7 +5,9 @@
 // 2、选择列表：也就是你当前可以做的选择。
 // 3、结束条件：也就是到达决策树底层，无法再做选择的条件。
 
-// 我们只要在递归之前做出选择，在递归之后撤销刚才的选择，就能正确得到每个节点的选择列表和路径
+// 在递归之前做出选择
+// 在递归之后撤销刚才的选择
+// 就能正确得到每个节点的选择列表和路径
 
 /**
  * 输入字符串，返回其字符的全排列
@@ -34,10 +36,9 @@ function permute(str) {
  * @param {string[]} res 
  */
 function dfs(str, track, res) {
-    // console.log('str:', str, 'track:', track, 'res:', res);
-
     // 到达决策树（回溯树）的叶子节点，触发结束条件
     if (track.length === str.length) {
+        // 相当于把路径数组拷贝到结果数组中
         res.push(track.join(''));
         return;
     }
@@ -45,6 +46,7 @@ function dfs(str, track, res) {
     for (let i = 0; i < str.length; i++) {
 
         // 排除不合法的选择（剪枝）
+        // 相当于隐性的选择列表
         if (track.includes(str[i])) {
             continue;
         }

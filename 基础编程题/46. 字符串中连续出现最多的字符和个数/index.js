@@ -4,33 +4,78 @@
 // 'abbkejsbcccwqaa' => {'c':3}
 // 注意：题目说的是连续出现，注意连续二字
 
-function getStrMaxLengthObj (str) {
-    if (!str) { return {} }
-    let strObj = {}
-    let res = {}
-    let max = 0
-    let currentLetter = ''
+function getMax(str) {
 
-    for (let i = 0; i < str.length; i ++) {
-        let item = str[i]
+    //若要保证字符添加的顺序，可考虑使用new Map()
+    let map = {};
 
-        if (currentLetter === item) {
-            strObj[item] += 1
+    let res = {};
+
+    let max = 0;
+    let curChar = '';
+
+    for (let i = 0; i < str.length; i++) {
+        const item = str[i];
+
+        if (item === curChar) {
+            // 相同字符串加1
+            map[item] += 1;
         } else {
-            currentLetter = item
-            strObj[item] = 1
+            //出现不连续字符的时候，初始化当前字符出现次数为1，
+            map[item] = 1;
+            curChar = item;
         }
 
-        if (strObj[item] > max) {
-            max = strObj[item]
-            res = {}
-            res[item] = max
-        } else if (strObj[item] === max) {
-            res[item] = max
+        // 若当前字符的最大次数大于已记录的最大次数（至于是哪个字符，我们不用关心）
+        if (map[item] > max) {
+            max = map[item];
+
+            // 清空结果对象，只记录当前字符的最大次数
+            res = {
+                [item]: max
+            };
+        } else if (map[item] === max) {
+            // 若最大次数已经出现过，则追加记录当前字符的次数，可能就是同一字符，也可能不是
+            res[item] = max;
+        }
+
+    }
+
+    console.log('map:', map, 'curChar:', curChar);
+
+    return res;
+}
+
+console.log(getMax('aaaaabbkeccjsbcccwqaaax')) //- {c:3}
+
+function fn2(str) {
+    let res = {}
+
+    // 也可直接用字面量对象 {}
+    let map = new Map()
+
+    let max = 0
+    let prevChar = ''
+
+    for (let char of str) {
+        if (prevChar === char) {
+            map.set(char, map.get(char) + 1)
+
+            if (map.get(char) > max) {
+                max = map.get(char)
+                res = {
+                    [char]: max
+                }
+            } else if (map.get(char) === max) {
+                res[char] = max
+            }
+        } else {
+            map.set(char, 1)
+            prevChar = char
         }
     }
 
     return res
 }
 
-console.log(getStrMaxLengthObj('aaaaabbkeccjsbcccwqaaax')) //- {c:3}
+console.log(fn2('aaabbkecccjsbcccwqaaax')) //- {c:3}

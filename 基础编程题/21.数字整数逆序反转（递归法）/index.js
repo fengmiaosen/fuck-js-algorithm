@@ -18,4 +18,4 @@ function fun(num) {
     }
 }
 
-console.log('func num:', fun(123456789));
+console.log('reverse num:', fun(123456789));

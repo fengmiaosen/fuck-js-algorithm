@@ -1,27 +1,47 @@
+// 回溯法
+// 解决一个回溯问题，实际上就是一个决策树的遍历过程。你只需要思考 3 个问题：
+// 1、路径：也就是已经做出的选择。
+// 2、选择列表：也就是你当前可以做的选择。
+// 3、结束条件：也就是到达决策树底层，无法再做选择的条件。
 
-/**
- * 主要逻辑：肯定是需要递归的~
- * 先将第一个字母取出，然后将剩下的字符串全排列。将这个字母，依次插入到每个排列所有缝隙。
-如：abc进行全排列，取出a，得到全排列bc和cb，先向bc插，可以得到abc，bac，bca；再向cb插，得到acb，cab，cba；
- * @param {*} str 
- */
-function func(str) {
+// 在递归之前做出选择
+// 在递归之后撤销刚才的选择
+// 就能正确得到每个节点的选择列表和路径
 
-    if (str.length < 2) {
-        return [str];
-    }
-    
-    let result = [];
-    let start = str.slice(0, 1);
-    let rightResults = func(str.slice(1));
+function permutation(str) {
+    let res = []
 
-    for (let i = 0; i < rightResults.length; i++) {
-        for (let j = 0; j < rightResults[i].length + 1; j++) {
-            result.push(rightResults[i].slice(0,j) + start + rightResults[i].slice(j));
-        }
-    }
+    // 追踪的路径
+    let track = []
 
-    return result;
+    dfs(str, track, res)
+
+    return res
 }
 
-console.log('全排列:', func('abcd'));
+function dfs(str, track, res) {
+    // 字符串中字符均递归过，到达决策树叶子
+    if (track.length === str.length) {
+        res.push(track.join(''))
+        return
+    }
+
+    for (const char of str) {
+        if (track.includes(char)) {
+            continue
+        }
+
+        // 做选择，修改路径
+        track.push(char)
+
+        // 继续递归
+        dfs(str, track, res)
+
+        // 撤销递归之前的选择
+        track.pop()
+    }
+}
+
+console.time('str')
+console.dir(permutation('abcd'), { depth: null })
+console.timeEnd('str')

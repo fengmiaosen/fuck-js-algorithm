@@ -15,10 +15,10 @@ function mergeList(arr1, arr2) {
     const arr = [...arr1, ...arr2].sort();
 
     //字符串首字母相同的情况下，根据字符串长度进行排序
-    let res = arr.sort((a,b) => {
-        if(a[0] === b[0] && a.length > b.length){
+    let res = arr.sort((a, b) => {
+        if (a[0] === b[0] && a.length > b.length) {
             return -1;
-        }else{
+        } else {
             return 1;
         }
     });
@@ -36,10 +36,10 @@ function mergeMultiArray(...arrs) {
     const arrList = arrs.reduce((arr, cur) => arr.concat(cur));
     arrList.sort();
 
-    let res = arrList.sort((a,b) => {
-        if(a[0]===b[0] && a.length > b.length){
+    let res = arrList.sort((a, b) => {
+        if (a[0] === b[0] && a.length > b.length) {
             return -1;
-        }else{
+        } else {
             return 1;
         }
     });

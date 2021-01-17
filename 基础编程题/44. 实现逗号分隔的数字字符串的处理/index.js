@@ -1,53 +1,60 @@
-
 // 输入 '1, 2, 3, 5, 7, 8, 10' 输出 '1~3, 5, 7~8, 10'
 
-var str = '1,2,3,5,7,8,10,20,30,31';
 
-function func(str) {
 
-    let nums = str.split(',');
+/**
+ * 
+ * @param {number[]} nums 
+ */
+function convert(nums) {
 
     let res = [];
-    let subArr = [nums[0]];
 
-    //慢指针指向连续数组的左边界
-    let j = 0;
+    let tmp = nums[0];
 
-    // 快指针，指向当前元素
-    let i = 1;
-
-    for (; i < nums.length; i++) {
-        // 遇到不连续的两个元素，则截取快慢指针之间的数组元素，并改变慢指针的指向
-        if (nums[i] - nums[i - 1] > 1) {
-            subArr = nums.slice(j, i);
-
-            res.push(convertStr(subArr));
-
-            j = i;
+    for (let i = 0; i < nums.length; i++) {
+        //遍历到数组末尾项的时候，nums[i+1]为undefined
+        // 所以要判断是否等于1，也包括前面的正常数值的差值
+        if (nums[i + 1] - nums[i] != 1) {
+            if (nums[i] !== tmp) {
+                res.push(`${tmp}~${nums[i]}`);
+            } else {
+                res.push(tmp);
+            }
+            tmp = nums[i + 1];
         }
     }
 
-    // 遍历结束后，记得要获取慢指针到数组末尾之间的元素
-    subArr = nums.slice(j);
-
-    res.push(convertStr(subArr));
-
-    return res.join(',');
-
+    return res;
 }
 
-function convertStr(list) {
-    // 处理连续数组的输出格式
-    // 以波浪线间隔
-    let newStr = '';
+function convert2(nums) {
 
-    if (list.length === 1) {
-        newStr = list[0].toString();
-    } else if (list.length > 1) {
-        newStr = `${list[0]}~${list[list.length - 1]}`
+    nums.sort((a, b) => a - b)
+
+    nums = [...new Set(nums)]
+
+    let res = []
+    let start = nums[0]
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] - nums[i - 1] > 1) {
+            if (nums[i - 1] !== start) {
+                res.push(`${start}~${nums[i - 1]}`)
+            } else {
+                res.push(start + '')
+            }
+            start = nums[i]
+        }
     }
 
-    return newStr;
+    res.push(start + '')
+
+    return res
 }
 
-console.log('new str:', func(str));
+const nums1 = [1, 2, 3, 5, 7, 8, 10];
+
+console.log('nums str:', convert(nums1));
+
+console.log('nums str 2:', convert2(nums1));

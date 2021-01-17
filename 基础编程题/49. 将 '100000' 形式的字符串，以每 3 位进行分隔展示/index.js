@@ -35,8 +35,15 @@ function convertStr2(str, point = '.') {
     return str.replace(/(?!^)(?=(\d{3})+$)/g, point)
 }
 
+function convertStr3(str, point = '.') {
+
+    return str.replace(/\d(?=(\d{3})+$)/g, `$&${point}`)
+}
+
 let str = '10000000000';
 
 console.log('str1:', convertStr(str, ','));
 
 console.log('str2:', convertStr2(str, ','));
+
+console.log('str3:', convertStr3(str, ','));

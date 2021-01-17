@@ -1,24 +1,5 @@
-
-function findIds(list, id) {
-
-    function dfs(list, id) {
-
-        for (let item of list) {
-            if (item.id === id) {
-                return [item.id];
-            } else if (item.children && item.children.length > 0) {
-                let ids = dfs(item.children, id);
-
-                if (ids) {
-                    return [item.id, ...ids];
-                }
-            }
-        }
-
-    }
-
-    return dfs(list, id);
-}
+// 已知数据格式，实现一个函数 fn ，找出某一节点所在链条中所有的父级 id
+// 比如'112' 的父级id路径为 ['1', '11', '112']
 
 const data = [{
     id: '1',
@@ -56,6 +37,21 @@ const data = [{
     ]
 }];
 
-const value = '111';
+function getParentIds(list, id) {
 
-console.log('parent ids:', findIds(data, value));
+    for (let item of list) {
+        if (item.id === id) {
+            return [id]
+        } else {
+            if (item.children && item.children.length) {
+                const ids = getParentIds(item.children, id)
+                if (ids) {
+                    return [item.id, ...ids]
+                }
+            }
+        }
+    }
+
+}
+
+console.dir(getParentIds(data, '12'), { depth: null })

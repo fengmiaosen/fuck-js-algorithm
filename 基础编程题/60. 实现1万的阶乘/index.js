@@ -27,7 +27,7 @@ function multiply(num1, num2) {
     //结果数组最大长度为 m+n，注意未填满的位置为0
     let res = new Array(m + n).fill(0);
 
-    //倒序从个位数对每个字符串（数字）做乘法，同时注意进位
+    // 倒序从个位数对每个字符串（数字）做乘法，同时注意进位
     // a[i],b[j]相乘的结果影响res[i+j], res[i+j+1]
     for (let i = m - 1; i >= 0; i--) {
         for (let j = n - 1; j >= 0; j--) {
@@ -80,5 +80,5 @@ function factorial2(n) {
 
 // console.log('factorial 1:', factorial(100));
 
-console.log('factorial dp:', factorial2(10000));
+console.log('factorial dp:', factorial2(10));
 

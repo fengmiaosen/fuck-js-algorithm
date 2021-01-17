@@ -7,7 +7,6 @@ var arr = [2, 10, 3, 4, 5, 11, 10, 11, 20]
  * @param {array} nums 
  */
 function splitArray(nums) {
-    const res = [];
 
     //去重
     nums = [...new Set(nums)];
@@ -17,6 +16,7 @@ function splitArray(nums) {
 
     console.log('nums:', nums);
 
+    const res = [];
     // 遍历一遍，相邻元素求差值，大于1则是不连续
     let subArr = [nums[0]];
 

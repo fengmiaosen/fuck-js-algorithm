@@ -4,24 +4,33 @@
 // 输入 [0,1,0,3,13]
 // 输出 [1,3,12,0,0]
 
-// 方法一
-function moveZero(arr) {
+// https://leetcode-cn.com/problems/move-zeroes/solution/shuang-zhi-zhen-jiao-huan-yuan-su-by-lo_e/
+/**
+ * 方法二：快慢双指针
+ * 慢指针 之前的所有元素都是非零的。
+ * 慢指针 和当前指针（快指针）之间的所有元素都是零
+ * @param {array} nums 
+ */
+function moveZero(nums) {
 
-    var len = arr.length;
-    var j = 0;
+    let i = 0; //快指针，用于遍历数组当前元素
+    let j = 0; //慢指针，指向待交换元素
 
-    for (var i = 0; i < len - j; i++) {
-        if(arr[i] === 0){
-            arr.push(0);
-            arr.splice(i,1);
-            i--;
+    while (i < nums.length) {
+        if (nums[i] !== 0) {
+            [nums[j], nums[i]] = [nums[i], nums[j]];
             j++;
         }
+        i++;
     }
 
-    return arr;
+    // [j,i) 之间的元素都是0
+    console.log('i j:', i, j)
+
+    return nums;
 }
 
-var arr = [0,1,0,3,13];
+var arr = [8, 0, 1, 0, 3, 13, 0, 4];
 
 console.log('new arr:', moveZero(arr));
+

@@ -20,3 +20,6 @@ function formatMoney(value) {
 }
 
 console.log(formatMoney('999999988'));
+
+// 参考资料
+// https://juejin.cn/post/6844904040912912397

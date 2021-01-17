@@ -17,3 +17,7 @@ let storages = ["64g", "256g"]
   ["iPhone XS", "白色", "64g"],
   ["iPhone XS", "白色", "256g"],
 ]
+
+### 参考
+
+https://cloud.tencent.com/developer/article/1645756

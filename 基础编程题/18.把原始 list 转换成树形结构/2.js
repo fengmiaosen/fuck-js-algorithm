@@ -15,7 +15,9 @@ let list = [
 
 /**
  * 基本思路：
- * 使用Map保存id和对象的映射，循环list，根据parentId在Map里取得父节点，如果父节点有children属性，就直接push当前的子节点，如果没有就添加children属性，最后遍历一遍list把parentId===0的节点取出来。
+ * 使用Map保存id和对象的映射
+ * 循环list，根据parentId在Map里取得父节点，如果父节点有children属性，就直接push当前的子节点
+ * 如果没有就添加children属性，最后遍历一遍list把parentId===0的节点取出来。
  * @param {array} list 
  */
 function convertStr(list) {

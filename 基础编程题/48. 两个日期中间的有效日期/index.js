@@ -38,4 +38,4 @@ function rangeDate(startDate, endDate) {
     return res;
 }
 
-console.log(rangeDate("2015-2-8", "2015-3-3"));
+console.log(rangeDate("2015-2-8", "2016-3-3"));

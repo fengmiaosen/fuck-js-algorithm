@@ -4,7 +4,7 @@ function func(obj) {
     let arr = new Array(12).fill(null);
 
     Object.keys(obj).map(key => {
-        arr[key-1]=obj[key];
+        arr[key - 1] = obj[key];
     });
 
     return arr;

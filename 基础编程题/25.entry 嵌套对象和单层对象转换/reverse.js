@@ -91,7 +91,7 @@ function convert2(obj) {
 
 
 const obj = convert(entry);
-console.log('output obj11:', JSON.stringify(obj))
+console.dir(obj, { depth: null })
 
 const obj2 = convert2(entry);
-console.log('output obj22:', JSON.stringify(obj2))
+console.dir(obj2, { depth: null })

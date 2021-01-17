@@ -13,7 +13,8 @@ function normalize(str) {
     //只匹配字符串中的字母部分，得到其字符串数组
     const arr = str.match(/\w+/g);
     // const arr = str.split(/[\[\]]/g).filter((item) => item);
-
+    console.log('arr match:', arr)
+    
     let result;
 
     // 倒序遍历，从叶子节点字段开始，自底向上

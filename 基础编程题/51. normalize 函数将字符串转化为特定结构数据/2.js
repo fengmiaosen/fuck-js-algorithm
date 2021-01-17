@@ -26,6 +26,30 @@ function normalize(str) {
     return res;
 }
 
+function normalize2(str) {
+
+    let arr = str.split(/[\[\]]/g).filter(Boolean);
+
+    let res = {};
+    let cur = {};
+
+    arr.forEach((item, idx) => {
+        if (idx == 0) {
+            res.value = item;
+            cur = res;
+        } else {
+            cur.children = {
+                value: item
+            };
+            cur = cur.children;
+        }
+    })
+
+    return res;
+}
+
 const s = '[abc[bcd[def]]]'
 
 console.log('normalize obj:', normalize(s));
+
+console.log('normalize obj 2:', normalize2(s));
