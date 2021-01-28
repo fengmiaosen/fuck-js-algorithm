@@ -1,65 +1,68 @@
-// 可参考前面 38题
-
-// 实现一个带并发数限制的fetch请求函数
-// 批量请求
-// 可控制并发度
-// 全部请求结束，执行 callback
-
-// https://juejin.im/post/5c89d447f265da2dd37c604c#comment
 
 
-function handleFetchQueue(urls, max, callback) {
-    const urlCount = urls.length;
-    const requestsQueue = [];
-    const results = [];
-    let i = 0;
-
-    const handleRequest = (url) => {
-        const req = fetch(url).then(res => {
-            console.log('当前并发： ' + requestsQueue);
-
-            const len = results.push(res);
-
-            if (len < urlCount && i + 1 < urlCount) {
-                requestsQueue.shift();
-                handleRequest(urls[++i])
-
-            } else if (len === urlCount) {
-                'function' === typeof callback && callback(results)
-            }
-        }).catch(e => {
-            results.push(e)
-        });
-
-        if (requestsQueue.push(req) < max) {
-            handleRequest(urls[++i])
-        }
-    };
-
-    handleRequest(urls[i])
-}
-
-
-const urls = Array.from({ length: 10 }, (v, k) => k);
-
-const fetch = function (idx) {
+function fetch(url) {
     return new Promise(resolve => {
-        console.log(`start request ${idx}`);
-
-        const timeout = parseInt(Math.random() * 1e4);
+        // console.log(`start request ${url}`);
+        const timeout = parseInt(Math.random() * 3000);
 
         setTimeout(() => {
-            console.log(`end request ${idx}`);
-            resolve(idx)
+            // console.log(`end request ${url}`);
+            resolve(url)
         }, timeout)
     })
-};
+}
 
-const max = 4;
+/**
+ * 相当于模拟一个并发请求的 promise.all
+ * @param {array} urls 
+ * @param {number} maxNum 
+ */
+function multiRequest(urls, maxNum) {
+    let total = urls.length
+    let result = new Array(total).fill(false)
+    let count = 0
 
-const callback = () => {
-    console.log('run callback');
-};
+    return new Promise((resolve, reject) => {
 
+        function next() {
+            // 索引号用来保证请求和响应的顺序一一对应
+            let idx = count
+            count++
 
-handleFetchQueue(urls, max, callback);
+            if (idx >= total) {
+                if (result.filter(item => item).length === total) {
+                    resolve(result)
+                }
+                return
+            }
+
+            console.log('fetch start:', idx)
+            fetch(urls[idx]).then(res => {
+                console.log('fetch end res:', idx)
+                result[idx] = res
+                if (idx < total) {
+                    next()
+                }
+            }).catch(err => {
+                console.log('fetch end err:', idx)
+                result[idx] = err
+                if (idx < total) {
+                    next()
+                }
+            })
+
+        }
+
+        while (count < maxNum) {
+            next()
+        }
+
+    })
+}
+
+let url2 = `https://api.github.com/search/users?q=d`;
+let arr = new Array(23).fill(url2).map((item, idx) => `${item}&idx=${idx}`)
+
+multiRequest(arr, 5).then((res) => {
+    console.log(res)
+})
