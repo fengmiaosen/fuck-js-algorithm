@@ -18,24 +18,24 @@ const square = num => {
 //   })
 // }
 
-// 解决方案一：
-// 改用for循环
-async function test() {
-
-    for (let i = 0; i < list.length; i++) {
-        let res = await square(list[i]);
-        console.log('res:', res);
-    }
-}
-
-// // 解决方案二：
-// // 改用for of循环
+// // 解决方案一：
+// // 改用for循环
 // async function test() {
 
-//     for (let item of list) {
-//         let res = await square(item);
-//         console.log('res:', res);
+//     for (let i = 0; i < list.length; i++) {
+//         let res = await square(list[i]);
+//         console.log('res for:', res);
 //     }
 // }
+
+// 解决方案二：
+// 改用for of循环
+async function test() {
+
+    for (let item of list) {
+        let res = await square(item);
+        console.log('res for of :', res);
+    }
+}
 
 test()

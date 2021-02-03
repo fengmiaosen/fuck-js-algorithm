@@ -1,5 +1,6 @@
 /**
- * 
+ * https://segmentfault.com/a/1190000013981513
+ * https://zhuanlan.zhihu.com/p/35040744
  * @param {array} middlewares 
  */
 function compose(middlewares) {

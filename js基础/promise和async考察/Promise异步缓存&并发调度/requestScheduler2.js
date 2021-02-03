@@ -36,7 +36,8 @@ class Scheduler {
 
             const res = await promiseFn();
             
-            // 注意：先执行return后面的表达式, 但是会在finally中语句块执行完之后才会执行return操作
+            // 注意：先执行return后面的表达式
+            //  但是会在finally中语句块执行完之后才会执行真正的 return操作
             return Promise.resolve(res);
 
         } catch (err) {

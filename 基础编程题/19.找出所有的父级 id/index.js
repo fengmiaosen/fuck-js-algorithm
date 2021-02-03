@@ -41,14 +41,14 @@ const data = [{
 // 找到对应的节点，然后回溯其父级路径
 function fn(list, id) {
 
-    function _fn(nodeList) {
+    function dfs(nodeList) {
         for (let i = 0, len = nodeList.length; i < len; i++) {
             const node = nodeList[i]
             if (node.id == id) {
                 return [node.id]
-            }
-            if (node.children && node.children.length) {
-                const r = _fn(node.children)
+            } else if (node.children && node.children.length) {
+                const r = dfs(node.children)
+                // 递归，只有找到对应节点，才与父节点id合并追加到数组中
                 if (r) {
                     return [node.id].concat(r)
                 }
@@ -56,7 +56,7 @@ function fn(list, id) {
         }
     }
 
-    return _fn(list)
+    return dfs(list)
 }
 
 

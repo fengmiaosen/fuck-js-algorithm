@@ -16,6 +16,7 @@ function isPlainObject(obj) {
         proto = Object.getPrototypeOf(proto);
     }
 
+    console.log('obj proto:', Object.getPrototypeOf(obj))
     return Object.getPrototypeOf(obj) === proto;
 }
 
@@ -36,6 +37,8 @@ function isPlainObj(obj) {
 
 
 function A() { }
+
+console.log('plain obj proto:', Object.getPrototypeOf({}))
 
 console.log(isPlainObject(new A));      // false
 console.log(isPlainObject(new Object)); // true

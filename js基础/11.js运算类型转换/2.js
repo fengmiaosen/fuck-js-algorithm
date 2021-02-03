@@ -8,3 +8,6 @@ console.log('typeof str2:', typeof str2);
 
 console.log(str1 == str2);
 console.log(str1 === str2);
+
+// https://segmentfault.com/a/1190000008594792
+console.log('[] == ![] ', [] == ![])

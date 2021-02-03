@@ -18,6 +18,7 @@ function symmetry1() {
 }
 
 // 方法二
+// 暴力破解
 function symmetry2() {
     let result = [];
 

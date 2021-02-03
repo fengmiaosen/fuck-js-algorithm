@@ -35,20 +35,20 @@ function convert2(nums) {
     nums = [...new Set(nums)]
 
     let res = []
-    let start = nums[0]
+    let tmp = nums[0]
 
     for (let i = 1; i < nums.length; i++) {
         if (nums[i] - nums[i - 1] > 1) {
-            if (nums[i - 1] !== start) {
-                res.push(`${start}~${nums[i - 1]}`)
+            if (nums[i - 1] !== tmp) {
+                res.push(`${tmp}~${nums[i - 1]}`)
             } else {
-                res.push(start + '')
+                res.push(tmp + '')
             }
-            start = nums[i]
+            tmp = nums[i]
         }
     }
 
-    res.push(start + '')
+    res.push(tmp + '')
 
     return res
 }

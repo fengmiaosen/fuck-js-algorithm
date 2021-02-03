@@ -24,7 +24,7 @@ function throttle(fn, delay) {
 
         //第一次
         lastTime = nowTime;
-        fn.applay(this, args);
+        fn.apply(this, args);
         timer && clearTimeout(timer);
 
     }

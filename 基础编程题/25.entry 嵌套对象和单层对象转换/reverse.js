@@ -26,14 +26,14 @@ var entry = {
  * @param {string} pathKey 
  */
 function convert(obj) {
-  let map = {};
+  let res = {};
 
   for (let key in obj) {
 
     if (key.includes('.')) {
       const keys = key.split('.');
 
-      let curObj = map;
+      let curObj = res;
 
       for (let i = 0; i < keys.length; i++) {
         const item = keys[i];
@@ -49,11 +49,11 @@ function convert(obj) {
         curObj = curObj[item];
       }
     } else {
-      map[key] = obj[key];
+      res[key] = obj[key];
     }
   }
 
-  return map;
+  return res;
 }
 
 /**
@@ -69,16 +69,15 @@ function convert2(obj) {
       const keys = key.split('.');
 
       // reduce的初始化参数要指向 result对象
-      keys.reduce((acc, cur, idx) => {
-        if (!acc[cur]) {
+      keys.reduce((acc, curKey, idx) => {
+        if (!acc[curKey]) {
           if (idx === keys.length - 1) {
-            acc[cur] = obj[key];
+            acc[curKey] = obj[key];
           } else {
-            acc[cur] = {};
+            acc[curKey] = {};
           }
         }
-
-        return acc[cur];
+        return acc[curKey];
       }, result);
 
     } else {

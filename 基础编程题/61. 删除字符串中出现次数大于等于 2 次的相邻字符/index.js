@@ -6,7 +6,7 @@
 
 function removeDuplicates(S) {
     // 栈中默认初始值为空字符串
-    let stack = [];
+    let stack = [''];
 
     for (let c of S) {
         // 栈头元素出栈，与当前位置字符比较

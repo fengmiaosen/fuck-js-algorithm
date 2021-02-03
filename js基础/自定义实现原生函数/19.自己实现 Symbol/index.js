@@ -28,7 +28,9 @@
 
     var SymbolPolyfill = function Symbol(description) {
 
-        if (this instanceof SymbolPolyfill) throw new TypeError('Symbol is not a constructor');
+        if (this instanceof SymbolPolyfill) {
+            throw new TypeError('Symbol is not a constructor');
+        }
 
         var descString = description === undefined ? undefined : String(description)
 

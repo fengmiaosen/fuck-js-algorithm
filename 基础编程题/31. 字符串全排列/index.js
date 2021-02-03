@@ -20,13 +20,14 @@ function permutation(str) {
 }
 
 function dfs(str, track, res) {
-    // 字符串中字符均递归过，到达决策树叶子
+    // 字符串中字符均递归过，到达决策树底部
     if (track.length === str.length) {
         res.push(track.join(''))
         return
     }
 
     for (const char of str) {
+        // 已经在路径中的字符，跳过，执行剪枝操作
         if (track.includes(char)) {
             continue
         }

@@ -11,8 +11,8 @@
 function normalize(str) {
 
     //只匹配字符串中的字母部分，得到其字符串数组
-    const arr = str.match(/\w+/g);
-    // const arr = str.split(/[\[\]]/g).filter((item) => item);
+    // const arr = str.match(/\w+/g);
+    const arr = str.split(/[\[\]]/g).filter((item) => item);
     console.log('arr match:', arr)
     
     let result;

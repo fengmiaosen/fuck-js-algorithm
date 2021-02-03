@@ -5,7 +5,7 @@
 function combine(...chunks) {
     let res = []
 
-    function fn(idx, track) {
+    function dfs(idx, track) {
         const chunk = chunks[idx]
 
         for (let item of chunk) {
@@ -16,7 +16,7 @@ function combine(...chunks) {
             if (idx === chunks.length - 1) {
                 res.push([...track])
             } else {
-                fn(idx + 1, [...track])
+                dfs(idx + 1, [...track])
             }
 
             // 撤销选择
@@ -24,7 +24,7 @@ function combine(...chunks) {
         }
     }
 
-    fn(0, [])
+    dfs(0, [])
 
     return res
 }
