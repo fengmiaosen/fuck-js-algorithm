@@ -60,8 +60,3 @@ var p1 = Promise.resolve(1),
 promiseAll([p1, p2, p3]).then(function (value) {
     console.log(value)
 })
-
-
-promiseAll2([p1, p2, p3]).then(function (value) {
-    console.log(value)
-})

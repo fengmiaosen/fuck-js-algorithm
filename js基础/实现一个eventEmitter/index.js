@@ -56,12 +56,14 @@ eventEmitter.on('say', function (str) {
   console.log(str);
 });
 
-eventEmitter.once('say', function (str) {
+eventEmitter.once('say11', function (str) {
   console.log('这是once 1:' + str)
 })
 
-console.log('events:', eventEmitter.events)
+// console.log('events:', eventEmitter.events)
 
 eventEmitter.emit('say', 'visa');
 eventEmitter.emit('say', 'visa222');
-eventEmitter.emit('say', 'visa333');
+
+eventEmitter.emit('say11', 'visa11');
+eventEmitter.emit('say11', 'visa11-22');

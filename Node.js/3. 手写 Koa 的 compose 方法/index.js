@@ -1,4 +1,5 @@
 /**
+ * koa中间件合并方法，将中间件数组合并为一个中间件
  * https://segmentfault.com/a/1190000013981513
  * https://zhuanlan.zhihu.com/p/35040744
  * @param {array} middlewares 
