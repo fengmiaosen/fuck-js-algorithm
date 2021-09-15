@@ -1,1 +1,0 @@
-http://www.alloyteam.com/2020/08/csp-nonce/
