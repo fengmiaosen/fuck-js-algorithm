@@ -59,6 +59,8 @@ let list = [
 function convert1(list) {
   const res = []
   const map = list.reduce((res, v) => (res[v.id] = v, res), {})
+  console.log('list map:', map)
+
   for (const item of list) {
     if (item.parentId === 0) {
       res.push(item)
@@ -116,6 +118,10 @@ function convert3(list) {
 }
 
 
-const result = convert3(list);
+const result1 = convert1(list);
+const result2 = convertStr(list);
+const result3 = convert3(list);
 
-console.log('convert:', result);
+console.log('convert 1:', result1);
+// console.log('convert 2:', result2);
+// console.log('convert 3:', result3);

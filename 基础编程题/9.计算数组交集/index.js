@@ -1,5 +1,5 @@
-var arr1 = [1, 2, 3, 4];
-var arr2 = [3, 4];
+let arr1 = [1, 2, 3, 4, 6, 9];
+let arr2 = [3, 4, 7, 9];
 
 /**
  * 方法一：使用数组的filter和includes方法
@@ -13,4 +13,4 @@ function intersect(nums1, nums2) {
 
 
 
-console.log('arr intersect:', intersect(arr1 ,arr2));
+console.log('arr intersect:', intersect(arr1, arr2));
