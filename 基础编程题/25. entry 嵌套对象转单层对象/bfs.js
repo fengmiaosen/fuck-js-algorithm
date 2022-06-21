@@ -4,6 +4,7 @@
 function flatObj(entry) {
     const queue = Object.entries(entry)
     const res = {}
+    console.log('queue:', queue)
 
     while (queue.length) {
         const [key, obj] = queue.shift()

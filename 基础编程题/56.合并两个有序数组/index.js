@@ -20,7 +20,7 @@ function mergeList(nums1, m, nums2, n) {
     let len = m + n - 1;
 
     while (l2 >= 0) {
-        // 此时 nums1 已重写入， nums2 还未合并完，仅仅需要将 nums2 的剩余元素（0…len）写入 nums2 即可，写入后，合并完成
+        // 此时 nums1 已重写入， nums2 还未合并完，仅仅需要将 nums2 的剩余元素（0…len）写入 nums1 即可，写入后，合并完成
         if (l1 < 0) {
             nums1[len--] = nums2[l2--];
         } else {

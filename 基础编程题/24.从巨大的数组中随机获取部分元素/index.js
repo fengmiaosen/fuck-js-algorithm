@@ -3,8 +3,6 @@
 const max_length = 100000;
 const source = Array.from({ length: max_length }).map((item, i) => i);
 
-// console.log('array source:', source);
-
 /**
  * 
  * @param {*} source 

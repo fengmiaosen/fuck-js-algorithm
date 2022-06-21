@@ -8,6 +8,7 @@ function reverse(num) {
     let res = 0
 
     while (num !== 0) {
+        // 通过求余获取最后一位数字
         let pop = num % 10
 
         // 边界判断
