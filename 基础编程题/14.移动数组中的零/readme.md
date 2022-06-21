@@ -4,4 +4,9 @@
 // 输入 [0,1,0,3,13]
 // 输出 [1,3,12,0,0]
 
+<<<<<<< HEAD
 // https://leetcode-cn.com/problems/move-zeroes/solution/shuang-zhi-zhen-jiao-huan-yuan-su-by-lo_e/
+=======
+https://leetcode-cn.com/problems/move-zeroes/solution/shuang-zhi-zhen-jiao-huan-yuan-su-by-lo_e/
+https://leetcode.cn/problems/move-zeroes/solution/dong-hua-yan-shi-283yi-dong-ling-by-wang_ni_ma/
+>>>>>>> d980a764afcd395065d3850956d795aed12ea48e
