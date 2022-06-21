@@ -1,30 +1,6 @@
 // 如何将[{id: 1}, {id: 2, pId: 1}, ...] 的重复数组（有重复数据）转成树形结构的数组 [{id: 1, child: [{id: 2, pId: 1}]}, ...] （需要去重）
 // 相似题目 https://muyiy.cn/question/program/88.html
 
-function transformTree(arr){
-    const res = [];
-
-    // 以id为key构建hashMap
-    const hashMap = arr.reduce((acc, cur) => {
-        acc[cur.id] = cur;
-        return acc;
-    }, {});
-    // 或者可以简写为
-    // const hashMap = arr.reduce((acc, cur) => (acc[cur.id]=cur, acc), {});
-
-    for(let item of Object.values(hashMap)){
-        if(!item.pId){
-            res.push(item);
-        } else {
-            const parentItem = hashMap[item.pId];
-            parentItem.child = parentItem.child || [];
-            parentItem.child.push(item);
-        }
-    }
-
-    return res;
-}
-
 const arr = [
     { id: 1, pId: null },
     { id: 2, pId: 1 },
@@ -36,8 +12,32 @@ const arr = [
     { id: 8, pId: 3 },
     { id: 9, pId: 8 },
     { id: 10, pId: 6 }
-  ];
+];
 
-  const result = transformTree(arr);
+function transform(arr) {
 
-  console.log('arr tree:', JSON.stringify(result));
+    const res = [];
+
+    //先遍历数组生成以id为键的hashmap，方便后面根据id获取数据
+    const map = arr.reduce((acc, cur) => {
+        acc[cur.id] = cur;
+        return acc;
+    }, {});
+
+    for (let item of arr) {
+        if (!item.pId) {
+            res.push(item);
+        } else {
+            const pItem = map[item.pId];
+            pItem.children = pItem.children || [];
+            pItem.children.push(item);
+        }
+    }
+
+    return res;
+
+}
+
+const arrTree = transform(arr);
+
+console.log('tree data:', JSON.stringify(arrTree));
