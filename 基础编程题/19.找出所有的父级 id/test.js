@@ -1,6 +1,3 @@
-// 已知数据格式，实现一个函数 fn ，找出某一节点所在链条中所有的父级 id
-// 比如'112' 的父级id路径为 ['1', '11', '112']
-
 const data = [{
     id: '1',
     name: 'test1',
@@ -37,21 +34,18 @@ const data = [{
     ]
 }];
 
-function getParentIds(list, id) {
+function findPath(data, id) {
 
-    for (let item of list) {
-        if (item.id === id) {
+    for(let item of data){
+        if(item.id === id){
             return [id]
-        } else {
-            if (item.children && item.children.length) {
-                const ids = getParentIds(item.children, id)
-                if (ids) {
-                    return [item.id, ...ids]
-                }
+        }else if(item.children && item.children.length){
+            const res = findPath(item.children, id)
+            if(res){
+                return [item.id, ...res]
             }
         }
     }
-
 }
 
-console.dir(getParentIds(data, '12'), { depth: null })
+console.log(findPath(data, '122'))
