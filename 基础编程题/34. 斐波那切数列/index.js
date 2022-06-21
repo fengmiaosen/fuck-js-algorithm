@@ -1,7 +1,8 @@
-
+// https://labuladong.github.io/algo/1/5/#一斐波那契数列
 
 
 /**
+ * 方法一
  * 动态规划
  * @param {number}} num 
  */
@@ -22,7 +23,7 @@ console.log('num dp:', fn(50))
 console.timeEnd('fn')
 
 /**
- * 计算指定数值范围内的斐波那切数列总和
+ * 方法二
  * 递归实现
  * @param {number} num 
  */
@@ -35,5 +36,5 @@ function getNum(num) {
 }
 
 console.time('num')
-console.log('num 10:', getNum(50))
+console.log('num 10:', getNum(40))
 console.timeEnd('num')

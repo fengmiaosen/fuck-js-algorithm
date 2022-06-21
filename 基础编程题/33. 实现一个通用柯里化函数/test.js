@@ -1,18 +1,14 @@
-/**
- * 
- * @param {Function} fn 
- * @param  {...any} args 
- */
-function curry(fn, ...args) {
 
-    if (args.length >= fn.length) {
+function curry(fn, ...args){
+    if(args.length >= fn.length){
         return fn(...args)
     }
 
-    return function (...params) {
+    return function(...params){
         return curry(fn, ...args, ...params)
     }
 }
+
 
 function add(x, y, z) {
     return (x + y + z)
