@@ -1,53 +1,77 @@
-
-var entry = {
-    a: {
-        b: {
-            c: {
-                dd: 'abcdd'
-            }
-        },
-        d: {
-            xx: 'adxx'
-        },
-        e: 'ae'
-    },
-    fg: 'a12'
+const entry = {
+    'a.b.c.dd': 'abcdd',
+    'a.d.xx': 'adxx',
+    'a.e': 'ae',
+    'f': 'fff'
 }
 
-//   // 要求转换成如下对象
-//   var output = {
-//     'a.b.c.dd': 'abcdd',
-//     'a.d.xx': 'adxx',
-//     'a.e': 'ae'
+// // 要求转换成如下对象
+// var output = {
+//   a: {
+//     b: {
+//       c: {
+//         dd: 'abcdd'
+//       }
+//     },
+//     d: {
+//       xx: 'adxx'
+//     },
+//     e: 'ae'
 //   }
+// }
 
-// 方法1 递归
-function fn1(obj) {
 
-    function flatObj(obj, parentKey = '', result = {}) {
+function convert(obj) {
+    let res = {}
 
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                const curKey = parentKey ? `${parentKey}.${key}` : key
-                if (typeof obj[key] === 'object') {
-                    flatObj(obj[key], curKey, result)
-                } else {
-                    result[curKey] = obj[key]
+    for (let key in obj) {
+        if (key.includes('.')) {
+            const ks = key.split('.')
+            let curRes = res;
+
+            ks.forEach((k, idx) => {
+                if (!curRes[k]) {
+                    if (idx === ks.length - 1) {
+                        curRes[k] = obj[key]
+                    } else {
+                        curRes[k] = {}
+                    }
                 }
-            }
-
+                curRes = curRes[k]
+            })
+        } else {
+            res[key] = obj[key]
         }
-        return result
     }
 
-    return flatObj(obj)
+    return res;
 }
 
+function convert2(obj) {
+    let res = {}
 
-// 方法2 bfs
-function fn2(obj) {
+    for (let key in obj) {
+        if (key.includes('.')) {
+            const ks = key.split('.')
 
+            ks.reduce((acc, cur, idx) => {
+                if (!acc[cur]) {
+                    if (idx === ks.length - 1) {
+                        acc[cur] = obj[key]
+                    } else {
+                        acc[cur] = {}
+                    }
+                }
+                return acc[cur];
+            }, res)
+        } else {
+            res[key] = obj[key]
+        }
+    }
+
+    return res;
 }
 
-console.log(fn1(entry))
-console.log(fn2(entry))
+console.dir(convert(entry), { depth: null })
+
+console.dir(convert2(entry), { depth: null })

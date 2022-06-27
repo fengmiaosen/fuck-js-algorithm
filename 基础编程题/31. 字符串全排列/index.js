@@ -8,6 +8,8 @@
 // 在递归之后撤销刚才的选择
 // 就能正确得到每个节点的选择列表和路径
 
+// https://labuladong.github.io/algo/1/6/#一全排列问题
+
 function permutation(str) {
     let res = []
 
@@ -43,6 +45,5 @@ function dfs(str, track, res) {
     }
 }
 
-console.time('str')
+
 console.dir(permutation('abcd'), { depth: null })
-console.timeEnd('str')
