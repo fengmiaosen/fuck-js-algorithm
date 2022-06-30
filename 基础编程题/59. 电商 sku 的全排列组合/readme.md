@@ -21,3 +21,7 @@ let storages = ["64g", "256g"]
 ### 参考
 
 https://cloud.tencent.com/developer/article/1645756
+
+https://www.zoo.team/article/sku-about
+
+https://juejin.cn/post/6844904191379374087

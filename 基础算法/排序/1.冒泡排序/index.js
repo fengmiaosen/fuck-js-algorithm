@@ -1,20 +1,22 @@
-function bubbleSort(arr) {
+let arr = [1, 3, 8, 4, 0, 12, 9];
 
-    let len = arr.length;
+function bubbleSort(list) {
 
-    for (let i = len; i >= 2; i--) {
-        for (let j = 0; j < len - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                let temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+    if (list.length < 1) {
+        return list
+    }
+
+    const len = list.length
+
+    for (let i = len - 1; i > 0; i--) {
+        for (let j = 0; j < i; j++) {
+            if (list[j] > list[j + 1]) {
+                [list[j + 1], list[j]] = [list[j], list[j + 1]]
             }
         }
     }
 
-    return arr;
+    return list
 }
 
-let arr = [1,3,8,4,0,12,9];
-
-console.log('bubble sort:', bubbleSort(arr));
+console.log('bubble sort:', bubbleSort(arr))

@@ -1,5 +1,5 @@
-// 二叉查找树是一种特殊的二叉树
-// 相对较小的值保存在左节点中，较大的值保存在右节点中，这一特性使得查找的效率很高，对于数值型和非数值型数据，比如字母和字符串，都是如此。
+// 二叉查找树是一种特殊的二叉树，相对较小的值保存在左节点中，较大的值保存在右节点中，
+// 这一特性使得查找的效率很高，对于数值型和非数值型数据，比如字母和字符串，都是如此。
 class BSTNode {
     constructor(data, left, right) {
         this.data = data;
@@ -211,16 +211,16 @@ class BST {
         let node = root;
 
         while (stack.length > 0 || node) {
-            if(node){
+            if (node) {
                 stack.push(node);
-                node=node.left;
-            }else{
-                node=stack.pop();
+                node = node.left;
+            } else {
+                node = stack.pop();
                 res.push(node.data);
 
                 console.log('inOrder node loop:', node.show());
 
-                node=node.right;
+                node = node.right;
             }
         }
 
@@ -284,9 +284,9 @@ class BST {
      * 迭代调用
      * @param {*} root 
      */
-    postOrderLoop(root){
-        const res=[];
-        const stack=[];
+    postOrderLoop(root) {
+        const res = [];
+        const stack = [];
 
         while (root || stack.length) {
             res.unshift(root.data)
@@ -304,39 +304,40 @@ class BST {
      * 广度优先（层序）遍历二叉树
      * @param {*} root 
      */
-    levelOrder(root){
+    levelOrder(root) {
         if (!root) { return []; }
 
         const queue = [root];
         const res = []; // 存放遍历结果
-    
+
         // 两层循环
-        // 外循环负责遍历层级结构, 内循环负责遍历每一层的子节点
-        while(queue.length){
+        // 外循环负责遍历层级结构,
+        // 内循环负责遍历每一层的子节点
+        while (queue.length) {
             const subRes = [];
             const level = queue.length; // 当前层的节点数
 
-            for(let i=0;i<level;i++){
+            for (let i = 0; i < level; i++) {
                 //遍历当前节点后，将其移出队列
                 const currentNode = queue.shift();
                 subRes.push(currentNode.data);
-    
-                if(currentNode.left){
+
+                if (currentNode.left) {
                     queue.push(currentNode.left);
                 }
-    
-                if(currentNode.right){
+
+                if (currentNode.right) {
                     queue.push(currentNode.right);
                 }
             }
-    
+
             console.log('queue 2:', queue);
 
             res.push(subRes);
         }
 
         console.log('level order:', res);
-    
+
         return res;
     }
 
