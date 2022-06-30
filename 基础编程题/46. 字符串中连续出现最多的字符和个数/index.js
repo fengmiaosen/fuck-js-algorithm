@@ -2,6 +2,7 @@
 
 // 'abcaakjbb' => {'a':2,'b':2}
 // 'abbkejsbcccwqaa' => {'c':3}
+
 // 注意：题目说的是连续出现，注意连续二字
 
 function getMax(str) {
@@ -48,6 +49,7 @@ function getMax(str) {
 
 console.log(getMax('aaaaabbkeccjsbcccwqaaax')) //- {c:3}
 
+// 方法二
 function fn2(str) {
     let res = {}
 

@@ -9,3 +9,5 @@ function add(num1, num2) {
   const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
   return (num1 * baseNum + num2 * baseNum) / baseNum;
 }
+
+console.log(add(0.000000000012,0.000000034))
