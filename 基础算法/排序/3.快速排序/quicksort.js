@@ -18,7 +18,8 @@ function quickSort(arr) {
         }
     }
 
-    // 分别对左右两个数组部分递归调用并和中间值合并
+    // 分别对左右两个数组部分递归调用
+    // 并和中间值合并
     let leftRes = quickSort(leftArr);
     let rightRes = quickSort(rightArr);
 
