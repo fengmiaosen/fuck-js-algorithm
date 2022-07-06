@@ -41,8 +41,8 @@ lru.add(1, 1);
 lru.add(2, 2);
 lru.add(3, 3);
 lru.add(4, 4);
-lru.get(2);
-lru.get(2);
+lru.get(3);
+lru.get(3);
 lru.get(2);
 lru.add(5, 5);
 
