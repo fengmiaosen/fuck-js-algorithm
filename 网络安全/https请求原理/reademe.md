@@ -1,8 +1,8 @@
 
+### 参考资料
 
 [一次安全可靠的通信——HTTPS原理](https://developers.weixin.qq.com/community/develop/article/doc/000046a5fdc7802a15f7508b556413)
 
-![https](https://imgkr.cn-bj.ufileos.com/7c9d2e38-6910-47b0-8712-e8f3e44872aa.png)
 
 
 * 客户端使用https的url访问web服务器,要求与服务器建立ssl连接
