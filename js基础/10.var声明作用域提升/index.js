@@ -5,6 +5,7 @@ var name = 'Tom';
 (function () {
     console.info('name', name);
     console.info('typeof name', typeof name);
+    
     if (typeof name == 'undefined') {
         var name = 'Jack';
         console.log('Goodbye ' + name);

@@ -13,3 +13,10 @@ setTimeout(() => {
         console.log('promise2');
     });
 }, 0);
+
+/**
+ * timer1
+ * promise1
+ * timer2
+ * promise2
+ */

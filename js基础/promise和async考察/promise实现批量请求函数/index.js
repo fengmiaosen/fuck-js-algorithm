@@ -54,7 +54,7 @@ function multiRequest(urls = [], maxNum) {
     })
 }
 let url2 = `https://api.github.com/search/users?q=d`;
-let arr = new Array(28).fill(url2).map((item, idx) => `${item}&idx=${idx}`)
+let arr = new Array(18).fill(url2).map((item, idx) => `${item}&idx=${idx}`)
 
 multiRequest(arr, 10).then((res) => {
     console.log(res)
