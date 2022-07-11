@@ -11,9 +11,9 @@ var b = 10;
 // 变量提升
 var a = 10;
 (function () {
-    console.log(a)
+    console.log('a:', a)
     a = 5
-    console.log(window.a)
+    console.log('window.a:', window.a)
     var a = 20;
     console.log(a)
 })()

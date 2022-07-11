@@ -17,5 +17,5 @@ var obj = {
 }
 obj.push(11)
 obj.push(22)
-console.log(obj)
+console.log('obj:', JSON.stringify(obj))
 
