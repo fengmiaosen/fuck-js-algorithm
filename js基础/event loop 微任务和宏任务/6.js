@@ -19,3 +19,12 @@ new Promise(resolve => {
 })
 
 console.log(2)
+
+/**
+ * 1
+ * 2
+ * 3
+ * before timeout
+ * also before timeout
+ * 4
+ */

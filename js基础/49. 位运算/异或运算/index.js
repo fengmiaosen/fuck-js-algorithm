@@ -8,4 +8,4 @@ const p = arr.reduce((a, b) => {
     return a ^ b
 })
 
-console.log(p)
+console.log('只出现一次的数字:', p)

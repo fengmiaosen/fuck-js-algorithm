@@ -19,3 +19,21 @@ async function main() {
 }
 main();
 
+
+//情形2：
+function wait2() {
+    return new Promise(resolve =>
+      setTimeout(resolve, 10 * 1000)
+    )
+  }
+  
+  async function main2() {
+    console.time('2');
+    await wait2();
+    await wait2();
+    await wait2();
+    console.timeEnd('2');
+  }
+  main2();
+
+//   大概30秒多点，30秒是因为每个等待10秒，同步执行

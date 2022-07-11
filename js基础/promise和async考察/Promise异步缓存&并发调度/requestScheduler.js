@@ -29,7 +29,8 @@ class Scheduler {
             promiseFn.resolve = resolve;
 
             // 判断当前运行中的任务数是否超过最大并发数
-            // 若没超过就逐个调用执行，即在前一个promise的then回调中递归调用执行下一个promise，若超过则将其push到待运行任务队列中
+            // 若没超过就逐个调用执行，即在前一个promise的then回调中递归调用执行下一个promise
+            // 若超过则将其push到待运行任务队列中
             if (this.concurrent < this.maxLimit) {
                 this.runTask(promiseFn);
             } else {
@@ -42,6 +43,7 @@ class Scheduler {
         this.concurrent++;
 
         promiseFn().then(() => {
+            // 异步任务函数，变为success 状态
             promiseFn.resolve();
 
             this.concurrent--;
@@ -71,7 +73,7 @@ const addTask = (time, order) => {
     })
 }
 
-addTask(2000, 1) 
+addTask(600, 1) 
 addTask(400, 4) 
 addTask(200, 2) 
 addTask(2000, 3)

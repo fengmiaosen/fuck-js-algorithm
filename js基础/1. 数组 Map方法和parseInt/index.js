@@ -19,4 +19,4 @@ console.log('parseInt:', res);
 
 // 数字转换为二进制字符串
 let num = 10
-console.log(num.toString(2))
+console.log('num:', num.toString(2))
