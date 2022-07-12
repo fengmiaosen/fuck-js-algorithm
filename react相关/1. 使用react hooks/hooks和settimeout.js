@@ -1,4 +1,7 @@
 // function组件和class组件本质的区别
+//  示例代码
+// https://codesandbox.io/s/hardcore-framework-c5rtwr?file=/src/App.js
+
 
 // class 组件
 class Index1 extends React.Component{

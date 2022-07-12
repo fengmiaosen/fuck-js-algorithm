@@ -29,7 +29,7 @@ function hasCycle(obj) {
 function hasCycle2(obj) {
     const map = new WeakMap();
 
-    function isCycle(obj){
+    function isCycle(obj, map){
         if (!obj) {
             return false;
         }
@@ -49,7 +49,7 @@ function hasCycle2(obj) {
         return false;
     }
 
-    return isCycle(obj)
+    return isCycle(obj, map)
 }
 
 const isCycle = hasCycle(obj);

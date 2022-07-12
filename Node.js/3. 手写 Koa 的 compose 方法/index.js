@@ -1,5 +1,7 @@
 /**
  * koa中间件合并方法，将中间件数组合并为一个中间件
+ * 使用文档 https://github.com/demopark/koa-docs-Zh-CN/blob/master/guide.md#%E5%B0%86%E5%A4%9A%E4%B8%AA%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%B8%8E-koa-compose-%E7%9B%B8%E7%BB%93%E5%90%88
+ * https://github.com/koajs/compose/blob/master/index.js
  * https://segmentfault.com/a/1190000013981513
  * https://zhuanlan.zhihu.com/p/35040744
  * @param {array} middlewares 
