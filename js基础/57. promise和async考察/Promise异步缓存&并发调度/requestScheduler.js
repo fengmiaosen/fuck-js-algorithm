@@ -16,7 +16,7 @@ class Scheduler {
         this.concurrent = 0;
 
         // 待运行的任务队列
-        this.tasks = [];
+        this.pendingTasks = [];
     }
 
     /**
@@ -34,7 +34,7 @@ class Scheduler {
             if (this.concurrent < this.maxLimit) {
                 this.runTask(promiseFn);
             } else {
-                this.tasks.push(promiseFn);
+                this.pendingTasks.push(promiseFn);
             }
         })
     }
@@ -49,20 +49,21 @@ class Scheduler {
             this.concurrent--;
 
             // 判断待执行任务队列中是否还有任务，如有则从队列头部弹出去执行
-            if(this.tasks.length > 0){
-                this.runTask(this.tasks.shift());
+            if (this.pendingTasks.length > 0) {
+                let headTask = this.pendingTasks.shift();
+                this.runTask(headTask);
             }
         })
     }
 }
 
-function sleep(time){
+function sleep(time) {
     return new Promise((resolve, reject) => {
         setTimeout(resolve, time);
     });
 }
 
-const scheduler = new Scheduler({maxLimit: 3});
+const scheduler = new Scheduler({ maxLimit: 3 });
 
 const addTask = (time, order) => {
 
@@ -73,7 +74,8 @@ const addTask = (time, order) => {
     })
 }
 
-addTask(600, 1) 
-addTask(400, 4) 
-addTask(200, 2) 
+addTask(600, 1)
+addTask(400, 4)
+addTask(200, 2)
 addTask(2000, 3)
+addTask(2500, 5)
