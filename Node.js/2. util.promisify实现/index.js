@@ -1,4 +1,13 @@
 //util.promisify 
+// https://nodejs.org/api/util.html#utilpromisifyoriginal
+
+// const stat = util.promisify(fs.stat);
+
+// stat('.').then((stats) => {
+//   // Do something with `stats`
+// }).catch((error) => {
+//   // Handle the error.
+// });
 
 function promisify(func){
 

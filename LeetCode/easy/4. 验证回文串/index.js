@@ -39,8 +39,8 @@ function isPalindrome(str) {
     return true;
 }
 
-// let str = "A man, a plan, a canal: Panama";
+let str = "A man, a plan, a canal: Panama";
 
-let str = "race a car";
+// let str = "race a car";
 
 console.log(isPalindrome(str));
