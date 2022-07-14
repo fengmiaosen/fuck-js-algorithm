@@ -6,18 +6,18 @@ const { isEqual } = require('lodash');
 
 const useDeepEffect = (effectFunc, deps) => {
     const isFirstRender = useRef(true)
-    const prepDeps = useRef(deps)
+    const prevDeps = useRef(deps)
 
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false
             return
         }
-        const isChangedDeps = deps.some((dep, index) => !isEqual(dep, prepDeps.current[index]));
+        const isChangedDeps = deps.some((dep, index) => !isEqual(dep, prevDeps.current[index]));
         
         if (isChangedDeps) {
             effectFunc()
-            prepDeps.current = deps
+            prevDeps.current = deps
         }
     }, deps)
 }
