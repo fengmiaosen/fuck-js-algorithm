@@ -3,4 +3,4 @@
 * [React useEffect Hook的对象 & 数组依赖](https://delaprada.com/2021/03/13/React-useEffect-Hook%E7%9A%84%E5%AF%B9%E8%B1%A1-%E6%95%B0%E7%BB%84%E4%BE%9D%E8%B5%96/)
 * [以列表页为例，谈React Hooks的逻辑抽象与封装](https://zhuanlan.zhihu.com/p/100683538)
 
-* [一文搞定常用的自定义 React Hooks](https://github.com/fengshi123/blog/issues/26)
+* [react hooks demo](https://codesandbox.io/s/hardcore-framework-c5rtwr?file=/src/hooks.js)
