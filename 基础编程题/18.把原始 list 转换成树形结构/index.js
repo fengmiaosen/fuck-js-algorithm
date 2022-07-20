@@ -64,9 +64,7 @@ function convert1(list) {
   for (const item of list) {
     if (item.parentId === 0) {
       res.push(item)
-      continue
-    }
-    if (item.parentId in map) {
+    } else if (item.parentId in map) {
       const parent = map[item.parentId]
       parent.children = parent.children || []
       parent.children.push(item)
@@ -81,11 +79,11 @@ function convert1(list) {
  * @param {*} source 
  * @param {*} parentId 
  */
-function convertStr(source, parentId = 0) {
+function convert2(source, parentId = 0) {
   let trees = [];
   for (let item of source) {
     if (item.parentId === parentId) {
-      let children = convertStr(source, item['id']);
+      let children = convert2(source, item['id']);
       if (children.length) {
         item.children = children
       }
@@ -119,9 +117,9 @@ function convert3(list) {
 
 
 const result1 = convert1(list);
-const result2 = convertStr(list);
+const result2 = convert2(list);
 const result3 = convert3(list);
 
-console.log('convert 1:', result1);
-// console.log('convert 2:', result2);
-// console.log('convert 3:', result3);
+console.log('convert 1:', JSON.stringify(result1));
+console.log('convert 2:', result2);
+console.log('convert 3:', result3);

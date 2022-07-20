@@ -31,6 +31,8 @@ function curry(fn, ...args) {
 
 const curryAdd = curry(add);
 
+console.log('curryAdd:', curryAdd)
+
 console.log(curryAdd(1)(2));
 
 console.log(curryAdd(1)(2)(3));
