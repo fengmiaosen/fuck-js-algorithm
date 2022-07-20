@@ -55,12 +55,10 @@ function convert2(obj) {
             const ks = key.split('.')
 
             ks.reduce((acc, cur, idx) => {
-                if (!acc[cur]) {
-                    if (idx === ks.length - 1) {
-                        acc[cur] = obj[key]
-                    } else {
-                        acc[cur] = {}
-                    }
+                if (idx === ks.length - 1) {
+                    acc[cur] = obj[key]
+                } else {
+                    acc[cur] = acc[cur] || {}
                 }
                 return acc[cur];
             }, res)
@@ -72,6 +70,6 @@ function convert2(obj) {
     return res;
 }
 
-console.dir(convert(entry), { depth: null })
+console.log(JSON.stringify(convert(entry)))
 
-console.dir(convert2(entry), { depth: null })
+console.log(JSON.stringify(convert2(entry)))

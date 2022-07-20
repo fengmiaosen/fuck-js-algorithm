@@ -7,7 +7,7 @@
 // https://leetcode-cn.com/problems/move-zeroes/solution/shuang-zhi-zhen-jiao-huan-yuan-su-by-lo_e/
 /**
  * 方法二：快慢双指针
- * 慢指针 之前的所有元素都是非零的。
+ * 慢指针 之前（左侧）的所有元素都是非零的。
  * 慢指针 和当前指针（快指针）之间的所有元素都是零
  * @param {array} nums 
  */

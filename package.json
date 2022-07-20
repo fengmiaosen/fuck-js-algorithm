@@ -22,5 +22,9 @@
     "node-fetch": "^2.6.1",
     "nzh": "^1.0.5",
     "pdfreader": "^1.2.10"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
