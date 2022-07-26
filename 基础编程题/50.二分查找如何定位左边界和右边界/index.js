@@ -50,7 +50,7 @@ function findRight(nums, target) {
         }
     }
 
-    return left;
+    return right;
 }
 
 let arr = [1, 3, 4, 4, 6, 8, 10];
