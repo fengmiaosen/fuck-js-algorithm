@@ -24,7 +24,7 @@ class LRUCache {
 
         const value = this.cache.get(key);
         if (!value) {
-            return;
+            return -1;
         }
 
         //先从map中删除当前访问的key，再重新添加到最新的顺序位置
@@ -35,15 +35,16 @@ class LRUCache {
     }
 }
 
-const lru = new LRUCache(4);
+const cache = new LRUCache( 2 /* 缓存容量 */ );
 
-lru.add(1, 1);
-lru.add(2, 2);
-lru.add(3, 3);
-lru.add(4, 4);
-lru.get(3);
-lru.get(3);
-lru.get(2);
-lru.add(5, 5);
+cache.add(1, 1);
+cache.add(2, 2);
+console.log(cache.get(1));       // 返回  1
+cache.add(3, 3);    // 该操作会使得密钥 2 作废
+console.log(cache.get(2));       // 返回 -1 (未找到)
+cache.add(4, 4);    // 该操作会使得密钥 1 作废
+console.log(cache.get(1));       // 返回 -1 (未找到)
+console.log(cache.get(3));       // 返回  3
+console.log(cache.get(4));       // 返回  4
 
-console.log(lru.cache);
+console.log(cache.cache);
