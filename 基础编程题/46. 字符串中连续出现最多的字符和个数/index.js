@@ -42,8 +42,6 @@ function getMax(str) {
 
     }
 
-    console.log('map:', map, 'curChar:', curChar);
-
     return res;
 }
 
