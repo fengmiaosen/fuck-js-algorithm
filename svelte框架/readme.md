@@ -9,3 +9,4 @@
 
 * [我对 Svelte 的看法](https://lutaonan.com/blog/svelte/)
 
+* [Svelte 响应式原理剖析 —— 重新思考 Reactivity](https://juejin.cn/post/6965741667928244254#heading-19)
