@@ -14,6 +14,12 @@ function getNumByType(type) {
     }
 }
 
+let colorMap = {
+    '黄': 1,
+    '红': 2,
+    '蓝': 3
+}
+
 function sortBalls(str) {
     let arr = str.split('')
     arr.sort((a, b) => {
@@ -23,7 +29,16 @@ function sortBalls(str) {
     return arr.join('')
 }
 
- var strs = '红蓝蓝黄红黄蓝红红黄红';
+function sortBalls2(str) {
+    let arr = str.split('')
+    arr.sort((a, b) => {
+        return colorMap[a] - colorMap[b]
+    })
 
- console.log('sort:', sortBalls(strs));
- 
+    return arr.join('')
+}
+
+var strs = '红蓝蓝黄红黄蓝红红黄红';
+
+console.log('sort 1:', sortBalls(strs));
+console.log('sort 2:', sortBalls2(strs));

@@ -39,7 +39,7 @@ const data = [{
 
 // 方法一：DFS 树的深度优先遍历
 // 找到对应的节点，然后回溯其父级路径
-function fn(list, id) {
+function findPath(list, id) {
 
     function dfs(nodeList) {
         for (let i = 0, len = nodeList.length; i < len; i++) {
@@ -50,7 +50,7 @@ function fn(list, id) {
                 const r = dfs(node.children)
                 // 递归，只有找到对应节点，才与父节点id合并追加到数组中
                 if (r) {
-                    return [node.id].concat(r)
+                    return [node.id, ...r]
                 }
             }
         }
@@ -93,5 +93,6 @@ function dfs(list, value) {
 
 const value = '112';
 
+console.log('parent path:', findPath(data, value));
 console.log('parent ids:', findIds(data, value));
 

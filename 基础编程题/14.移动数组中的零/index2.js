@@ -9,7 +9,7 @@ function moveZero(arr) {
     // 快指针遍历当前元素
     for (let i = 0; i < arr.length; i++) {
 
-        if(arr[i] !== 0){
+        if (arr[i] !== 0) {
             [arr[j], arr[i]] = [arr[i], arr[j]];
             j++;
         }

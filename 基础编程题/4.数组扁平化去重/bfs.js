@@ -19,9 +19,7 @@ function flat2(list) {
         const node = queue.shift()
 
         if(Array.isArray(node)){
-            node.forEach(item => {
-                queue.push(item)
-            })
+            queue.push(...node)
         }else{
             res.push(node)
         }
