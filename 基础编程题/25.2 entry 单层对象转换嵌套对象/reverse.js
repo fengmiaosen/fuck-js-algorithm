@@ -70,12 +70,10 @@ function convert2(obj) {
 
       // reduce的初始化参数要指向 result对象
       keys.reduce((acc, curKey, idx) => {
-        if (!acc[curKey]) {
-          if (idx === keys.length - 1) {
-            acc[curKey] = obj[key];
-          } else {
-            acc[curKey] = {};
-          }
+        if (idx === keys.length - 1) {
+          acc[curKey] = obj[key];
+        } else {
+          acc[curKey] = acc[curKey] || {};
         }
         return acc[curKey];
       }, result);

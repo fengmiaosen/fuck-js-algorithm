@@ -61,4 +61,7 @@ function LazyMan(name) {
     return new LazyManClass(name);
 }
 
+// demo
 LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(1).sleep(2).eat('junk food');
+
+// LazyMan('Tony').eat('lunch')
