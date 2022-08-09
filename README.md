@@ -9,3 +9,4 @@ JavaScript算法学习
 * [Daily-Interview-Question](https://github.com/Advanced-Frontend/Daily-Interview-Question)
 * [冴羽的博客](https://github.com/mqyqingfeng/Blog)
 * [JavaScript-Algorithms](https://github.com/sisterAn/JavaScript-Algorithms)
+* [8 套前端监控体系建设方案手册](https://mp.weixin.qq.com/s/7obPxiu5I-xKd3ehzzaUNQ)

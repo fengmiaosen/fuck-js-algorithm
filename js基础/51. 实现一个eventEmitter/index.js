@@ -18,7 +18,7 @@ class EventEmitter {
   once(type, fn) {
     let callback = (...args) => {
       fn.apply(this, args)
-      this.off(type, fn)
+      this.off(type, callback)
     }
     this.on(type, callback)
   }
