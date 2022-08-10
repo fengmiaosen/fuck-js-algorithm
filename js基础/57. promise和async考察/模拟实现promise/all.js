@@ -11,25 +11,38 @@ function promiseAll(promises) {
         let result = [];
 
         for (let i = 0; i < len; i++) {
-            ((i) => {
-                Promise.resolve(promises[i]).then(v => {
-                    resolveCount++;
-                    result[i] = v;
+            // ((i) => {
+            //     Promise.resolve(promises[i]).then(v => {
+            //         resolveCount++;
+            //         result[i] = v;
 
-                    if (resolveCount === len) {
-                        return resolve(result);
-                    }
-                }).catch((err) => {
-                    return reject(err);
-                })
-            })(i)
+            //         if (resolveCount === len) {
+            //             return resolve(result);
+            //         }
+            //     }).catch((err) => {
+            //         return reject(err);
+            //     })
+            // })(i)
+
+            Promise.resolve(promises[i]).then(v => {
+                console.log('index i:', i);
+
+                resolveCount++;
+                result[i] = v;
+
+                if (resolveCount === len) {
+                    return resolve(result);
+                }
+            }).catch((err) => {
+                return reject(err);
+            })
         }
     });
 }
 
 
 function promiseAll2(promises) {
-    if(promises.length){
+    if (!promises.length) {
         throw new Error('必须是数组格式！')
     }
 
@@ -38,12 +51,13 @@ function promiseAll2(promises) {
     let count = 0
 
     return new Promise((resolve, reject) => {
-        promises.forEach(p => {
+        promises.forEach((p, idx) => {
             Promise.resolve(p).then(res => {
+                console.log('idx:', idx);
                 count++;
                 result.push(res)
 
-                if(count === len){
+                if (count === len) {
                     resolve(result)
                 }
             }).catch(e => {
@@ -58,5 +72,9 @@ var p1 = Promise.resolve(1),
     p3 = Promise.resolve(3);
 
 promiseAll([p1, p2, p3]).then(function (value) {
-    console.log(value)
+    console.log('p1:', value)
+})
+
+promiseAll2([p1, p2, p3]).then(function (value) {
+    console.log('p2:', value)
 })
