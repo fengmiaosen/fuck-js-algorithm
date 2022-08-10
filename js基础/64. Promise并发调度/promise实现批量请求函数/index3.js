@@ -1,33 +1,37 @@
 function taskQueue(tasks = [], limit) {
-    const res = [];
+    let res = [];
     let count = 0; //已经执行的任务数量(已执行不代表已返回)
+    // 任务总数len
+    let len = tasks.length;
+
     return new Promise(resolve => {
         for (let i = 0; i < limit; i++) {
             run();
         }
-        // 任务总数len
-        const len = tasks.length;
+
         // 执行任务
         function run() {
             // 这里不能用`count++;`代替哦，大家可以想下为什么？
+            // ？？？ 
+            // 一开始会并发运行最大数量的任务，run函数并发执行，不同任务执行完成的时间不确定
+            // 
             let current = count++;
+
             //临界条件
             if (current >= len) {
                 res.length === len && resolve(res);
                 return;
             }
-            console.log("current", current);
+            // console.log("current", current);
+
             // 发送异步请求
             execute(tasks[current])
                 .then(data => {
                     res.push(data);
-                    // 如果还有任务没执行，就递归执行任务
-                    if (current < len) {
-                        run();
-                    }
                 })
                 .catch(err => {
                     res.push(err);
+                }).finally(() => {
                     // 如果还有任务没执行，就递归执行任务
                     if (current < len) {
                         run();

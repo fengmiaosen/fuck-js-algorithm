@@ -12,41 +12,42 @@
 function multiRequest(urls = [], maxNum) {
     let result = new Array(urls.length).fill(false)
     let sum = urls.length; //总数
-    let count = 0;        //已完成数
+    let count = 0;        //已经执行的任务数量(已执行不代表已返回)
 
     return new Promise((resolve, reject) => {
 
         function next() {
+            // 当前任务在队列中对应的索引号
             let current = count++
+            // // 等同于
+            // let current = count
+            // count++
+
             // 边界
             if (current >= sum) {
                 !result.includes(false) && resolve(result)
                 return
             }
-            let url = urls[current];
 
             console.log("开始：" + current, new Date().toLocaleString());
 
+            let url = urls[current];
             fetch(url).then((res) => {
                 console.log("结束：" + current, new Date().toLocaleString());
-
                 result[current] = res
-
-                //还有未完成，递归；
-                if (current < sum) {
-                    next()
-                }
             }).catch((err) => {
                 console.log("结束：" + current, new Date().toLocaleString());
-
+                console.log('catch err!', err)
                 result[current] = err
+            }).finally(() => {
+                //还有未完成，递归；
                 if (current < sum) {
                     next()
                 }
             })
         }
 
-        //先请求maxNum个呗    
+        //先并发请求maxNum个呗    
         while (count < maxNum) {
             next()
         }
@@ -54,9 +55,9 @@ function multiRequest(urls = [], maxNum) {
     })
 }
 let url2 = `https://api.github.com/search/users?q=d`;
-let arr = new Array(18).fill(url2).map((item, idx) => `${item}&idx=${idx}`)
+let arr = new Array(15).fill(url2).map((item, idx) => `${item}&idx=${idx}`)
 
-multiRequest(arr, 10).then((res) => {
+multiRequest(arr, 6).then((res) => {
     console.log(res)
 })
 
