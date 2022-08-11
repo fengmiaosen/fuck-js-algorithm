@@ -8,4 +8,5 @@
 * [面向大型工作台的微前端解决方案 icestark](https://zhuanlan.zhihu.com/p/88449415)
 
 * [icestark](https://micro-frontends.ice.work/)
+* [EMP 基于下一代构建实现微前端解决方案](https://emp2.netlify.app/)
 * [webpack Module Federation](https://webpack.docschina.org/concepts/module-federation/)
