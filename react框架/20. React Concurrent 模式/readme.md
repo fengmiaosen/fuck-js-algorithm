@@ -20,3 +20,4 @@ ReactDOM.createRoot(rootNode).render(<App />)。目前在实验中，未来稳�
 
 * [使用 Concurrent 模式](https://zh-hans.reactjs.org/docs/concurrent-mode-adoption.html)
 * [什么是 React Concurrent Mode](https://www.teqng.com/2021/11/10/%E4%BB%80%E4%B9%88%E6%98%AF-react-concurrent-mode%EF%BC%9F%E3%80%90react%E6%9E%B6%E6%9E%84%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F%EF%BC%81%EF%BC%81%EF%BC%81%E3%80%91/)
+* [react源码解析6.legacy模式和concurrent模式](https://segmentfault.com/a/1190000041398757)

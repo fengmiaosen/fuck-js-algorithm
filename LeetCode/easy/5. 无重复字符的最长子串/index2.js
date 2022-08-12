@@ -1,5 +1,3 @@
-// 滑动窗口算法
-
 // Leetcode3
 // https://mp.weixin.qq.com/s/_pDPaf-GBLsMCNp_-MsWfg
 // https://leetcode.cn/problems/longest-substring-without-repeating-characters/
@@ -23,19 +21,30 @@
 // 解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
 //      请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
 
-function lengthOfLongestSubstring(s) {
-    let map = new Map(), max = 0
 
-    for (let i = 0, j = 0; j < s.length; j++) {
-        if (map.has(s[j])) {
-            i = Math.max(map.get(s[j]) + 1, i)
-        }
-        max = Math.max(max, j - i + 1)
-        map.set(s[j], j)
+const lengthOfLongestSubstring2 = function (s) {
+  if (s.length === 0) {
+    return 0;
+  }
+
+  let left = 0;
+  let right = 1;
+  let max = 0;
+  while (right <= s.length) {
+    let lr = s.slice(left, right);
+    const index = lr.indexOf(s[right]);
+
+    if (index > -1) {
+      left = index + left + 1;
+    } else {
+      lr = s.slice(left, right + 1);
+      max = Math.max(max, lr.length);
     }
-    return max
+    right++;
+  }
+  return max;
 };
 
-console.log(lengthOfLongestSubstring('abcabcbb'))
-console.log(lengthOfLongestSubstring('bbbbb'))
-console.log(lengthOfLongestSubstring('pwwkew'))
+console.log(lengthOfLongestSubstring2('abcabcbb'))
+console.log(lengthOfLongestSubstring2('bbbbb'))
+console.log(lengthOfLongestSubstring2('pwwkew'))
