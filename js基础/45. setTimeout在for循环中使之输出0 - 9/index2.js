@@ -4,21 +4,21 @@
 // 3、不能使用全局变量
 
 // 原始代码
-function print1(n) {
+function print(n) {
     setTimeout(() => {
         console.log(n);
     }, Math.floor(Math.random() * 1000));
 }
 
 for (var i = 0; i < 100; i++) {
-    // print(i);
-    // print2(i);
-    print3(i);
+    // print1(i);
+    print2(i);
+    // print3(i);
 }
 
 // 方法一：修改后的代码
 //实现原理：闭包，匿名函数自执行 ，即使创建它的上下文已经销毁，变量仍然存在
-function print(n) {
+function print1(n) {
     setTimeout((
         () => {
             console.log(n);

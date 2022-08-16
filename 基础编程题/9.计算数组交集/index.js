@@ -11,6 +11,29 @@ function intersect(nums1, nums2) {
     return nums1.filter(n1 => nums2.includes(n1));
 }
 
+/**
+ * 
+ * @param {array} nums1 
+ * @param {array} nums2 
+ */
+function intersect2(nums1, nums2) {
+    let res = []
+    let map = new Map()
+
+    nums1.forEach(num => {
+        map.set(num, 1)
+    })
+
+    nums2.forEach(num => {
+        if (map.has(num)) {
+            res.push(num)
+        }
+    })
+
+    return res
+}
+
 
 
 console.log('arr intersect:', intersect(arr1, arr2));
+console.log('arr intersect2:', intersect2(arr1, arr2));

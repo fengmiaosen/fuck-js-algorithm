@@ -8,6 +8,10 @@
 * 与类型别名不同，接口可以定义多次，会被自动合并为单个接口。
 * 两者都可以扩展，接口通过 extends 来实现。类型别名的扩展就是交叉类型，通过 & 来实现。
 
+### infer
+
+https://jkchao.github.io/typescript-book-chinese/tips/infer.html
+
 
 ### 参考资料
 

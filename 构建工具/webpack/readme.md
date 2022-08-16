@@ -18,3 +18,10 @@ webpack-dev-server 主要包含了三个部分：
 6.Client对比当前 modules tree ，再次发请求到 Server 端获取新的JS模块；
 7.Client获取到新的JS模块后，会更新 modules tree并替换掉现有的模块；
 8.最后调用 module.hot.accept() 完成热更新；
+
+
+### 参考资料
+
+* [微前端与webpack 5 Module Federation](https://juejin.cn/post/7051086216594194462)
+* [Module Federation](https://webpack.js.org/concepts/module-federation/)
+* [一文看透 Module Federation](https://mp.weixin.qq.com/s?__biz=Mzg4MjE5OTI4Mw==&mid=2247491129&idx=1&sn=9bc933947f922b215872abde9c42be6d&scene=21#wechat_redirect)
