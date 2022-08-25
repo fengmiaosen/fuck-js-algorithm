@@ -1,4 +1,22 @@
 
+### 高阶组件 HOC
+
+实现高阶组件的方式有以下两种:
+
+* 属性代理(Props Proxy)
+
+返回一个无状态（stateless）的函数组件
+返回一个 class 组件
+
+
+
+* 反向继承(Inheritance Inversion)
+
+
+### render props
+
+
+
 
 ### 参考资料
 

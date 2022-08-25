@@ -8,7 +8,7 @@
 * Vuex
 
  view——>commit——>mutations——>state变化——>view变化（同步操作） 
- view——>dispatch——>actions——>mutations——>state变化——>view变化（异步操作）
+ view——>dispatch——>actions——> commit ->mutations——>state变化——>view变化（异步操作）
 
 
 
