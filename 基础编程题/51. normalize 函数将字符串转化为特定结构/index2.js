@@ -6,7 +6,7 @@
 
 /**
  * 
- * @param {*} str 
+ * @param {string} str 
  */
 function normalize(str) {
     const arr = str.split(/[\[\]]/g).filter(item => !!item);
@@ -26,6 +26,11 @@ function normalize(str) {
     return res;
 }
 
+/**
+ * 
+ * @param {string} str 
+ * @returns 
+ */
 function normalize2(str) {
 
     let arr = str.split(/[\[\]]/g).filter(Boolean);

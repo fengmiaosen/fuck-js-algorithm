@@ -4,7 +4,7 @@ var arr = [
     [6, 7, 8, 9, [11, 12, [12, 13, [14]]]]
 ];
 
-function uniq(list){
+function uniq(list) {
     return Array.from(new Set(list))
 }
 /**
@@ -15,12 +15,12 @@ function flat2(list) {
     let res = []
     let queue = [...list]
 
-    while(queue.length){
+    while (queue.length) {
         const node = queue.shift()
 
-        if(Array.isArray(node)){
+        if (Array.isArray(node)) {
             queue.push(...node)
-        }else{
+        } else {
             res.push(node)
         }
     }

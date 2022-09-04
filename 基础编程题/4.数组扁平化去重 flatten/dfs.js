@@ -19,7 +19,6 @@ function flat(list) {
     let res = [];
 
     for (let item of list) {
-
         if (Array.isArray(item)) {
             res = [...res, ...flat(item)]
         } else {

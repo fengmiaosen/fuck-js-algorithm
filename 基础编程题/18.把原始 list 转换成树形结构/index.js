@@ -59,7 +59,6 @@ let list = [
 function convert1(list) {
   const res = []
   const map = list.reduce((res, v) => (res[v.id] = v, res), {})
-  console.log('list map:', map)
 
   for (const item of list) {
     if (item.parentId === 0) {

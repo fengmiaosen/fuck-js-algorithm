@@ -7,6 +7,7 @@ function flatten(obj) {
         return;
     }
     let res = {};
+    
     const dfs = (cur, prefix) => {
         if (isObject(cur)) {
             if (Array.isArray(cur)) {

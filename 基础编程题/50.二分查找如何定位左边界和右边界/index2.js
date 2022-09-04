@@ -9,16 +9,16 @@
 function findLeft(nums, target) {
 
     let left = 0;
-    let right = nums.length;
+    let right = nums.length - 1;
 
-    while (left < right) {
+    while (left <= right) {
 
         let mid = Math.floor((left + right) / 2);
 
         if (nums[mid] === target) {
-            right = mid; //关键地方
+            right = mid - 1; //关键地方
         } else if (nums[mid] > target) {
-            right = mid; //关键地方
+            right = mid - 1; //关键地方
         } else {
             left = mid + 1;
         }
@@ -35,16 +35,16 @@ function findLeft(nums, target) {
 function findRight(nums, target) {
 
     let left = 0;
-    let right = nums.length;
+    let right = nums.length - 1;
 
-    while (left < right) {
+    while (left <= right) {
 
         let mid = Math.floor((left + right) / 2);
 
         if (nums[mid] === target) {
             left = mid + 1 //关键地方
         } else if (nums[mid] > target) {
-            right = mid;
+            right = mid - 1;
         } else {
             left = mid + 1;//关键地方
         }

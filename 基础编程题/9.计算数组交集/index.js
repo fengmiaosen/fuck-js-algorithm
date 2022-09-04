@@ -7,7 +7,6 @@ let arr2 = [3, 4, 7, 9];
  * @param {*} nums2 
  */
 function intersect(nums1, nums2) {
-
     return nums1.filter(n1 => nums2.includes(n1));
 }
 

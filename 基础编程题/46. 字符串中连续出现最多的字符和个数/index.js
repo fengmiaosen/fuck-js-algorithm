@@ -13,18 +13,19 @@ function getMax(str) {
     let res = {};
 
     let max = 0;
-    let curChar = '';
+
+    let prevChar = '';
 
     for (let i = 0; i < str.length; i++) {
         const item = str[i];
 
-        if (item === curChar) {
+        if (item === prevChar) {
             // 相同字符串加1
             map[item] += 1;
         } else {
-            //出现不连续字符的时候，初始化当前字符出现次数为1，
+            //出现不连续字符的时候
             map[item] = 1;
-            curChar = item;
+            prevChar = item;
         }
 
         // 若当前字符的最大次数大于已记录的最大次数（至于是哪个字符，我们不用关心）

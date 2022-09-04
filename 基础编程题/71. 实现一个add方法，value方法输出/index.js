@@ -8,6 +8,7 @@ const add = (...args) => {
     const _add = (...args1) => {
         return add(...args, ...args1)
     }
+    
     _add.value = () => args.reduce((t, e) => t + e)
 
     return _add
