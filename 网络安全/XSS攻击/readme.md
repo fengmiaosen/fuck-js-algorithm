@@ -1,3 +1,6 @@
+人们经常将跨站脚本攻击（Cross Site Scripting）缩写为CSS，但这会与层叠样式表（Cascading Style Sheets，CSS）的缩写混淆。因此，有人将跨站脚本攻击缩写为XSS
+
+跨站脚本攻击（XSS）
 
 * 反射型XSS
 
@@ -5,7 +8,6 @@
 
 常见的通过浏览器地址栏输入的HTTP GET请求参数和页面搜索框输入的POST查询内容。恶意用户通过构造含恶意脚本的URL, 发送到各种群、朋友圈、邮箱，诱导用户点击，获取点击用户的信息，达到攻击目的。
 
- 
 
 * 存储型XSS
 
@@ -13,3 +15,6 @@
 
 这种场景通常是用户的留言、评论中含有恶意脚本，存储在了服务器中，普通用户访问到就会受到攻击，理论上该Web应用的任何用户都是攻击对象
 
+
+
+* [根据白名单过滤 HTML(防止 XSS 攻击)](https://github.com/leizongmin/js-xss/blob/master/README.zh.md)

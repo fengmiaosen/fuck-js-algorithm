@@ -24,6 +24,8 @@ function findLeft(nums, target) {
         }
     }
 
+    // TODO 边界判断
+
     return left;
 }
 
@@ -50,6 +52,8 @@ function findRight(nums, target) {
         }
     }
 
+    // TODO 边界判断
+    
     return right;
 }
 

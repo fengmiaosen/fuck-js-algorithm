@@ -36,6 +36,7 @@ function merge(leftArr, rightArr) {
         }
     }
 
+    // while循环结束，2个数组中最多只可能还有一个数组没有完全遍历
     return arr.concat(leftArr).concat(rightArr);
 }
 

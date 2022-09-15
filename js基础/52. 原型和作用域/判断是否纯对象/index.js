@@ -31,6 +31,9 @@ function isPlainObj(obj) {
         proto = proto.__proto__
     }
 
+    console.log('obj.__proto__:', obj.__proto__)
+    console.log('proto:', proto)
+
     return obj.__proto__ === proto
 }
 
@@ -43,6 +46,7 @@ console.log(isPlainObject(new A));      // false
 console.log(isPlainObject(new Object)); // true
 console.log(isPlainObject({}));         // true
 
+console.log('isPlainObj=====')
 console.log(isPlainObj(new A));      // false
 console.log(isPlainObj(new Object)); // true
 console.log(isPlainObj({}));         // true

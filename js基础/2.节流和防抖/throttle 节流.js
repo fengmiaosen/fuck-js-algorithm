@@ -15,7 +15,9 @@ function throttle(fn, delay) {
             timer && clearTimeout(timer);
 
             timer = setTimeout(() => {
+                // 计时器回调函数执行完毕，更新lastTime用于下一次比较
                 lastTime = Date.now();
+
                 fn.apply(this, args);
             }, delay - gapTime);
 

@@ -27,12 +27,20 @@ console.log(transform(str));
 
 
 // 驼峰式转换为中横线
-function styleHyphenFormat(propertyName) {
+/**
+ * 
+ * @param {string} str 
+ * @returns 
+ */
+function styleHyphenFormat(str) {
     function upperToHyphenLower(match) {
         return '-' + match.toLowerCase();
     }
-    return propertyName.replace(/[A-Z]/g, upperToHyphenLower);
+    return str.replace(/[A-Z]/g, upperToHyphenLower);
 }
 
 
 console.log(styleHyphenFormat('borderTop'))
+
+// TODO 兼容这种情况
+console.log(styleHyphenFormat('BorderTop'))

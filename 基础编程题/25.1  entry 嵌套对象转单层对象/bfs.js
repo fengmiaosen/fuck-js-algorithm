@@ -4,12 +4,11 @@
 function flatObj(entry) {
     const queue = Object.entries(entry)
     const res = {}
-    console.log('queue:', queue)
 
     while (queue.length) {
         const [key, obj] = queue.shift()
 
-        if (typeof obj === 'object') {
+        if (typeof obj === 'object' && obj) {
             for (const [k, v] of Object.entries(obj)) {
                 if (typeof v !== 'object') {
                     res[`${key}.${k}`] = v

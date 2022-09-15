@@ -9,16 +9,16 @@
 //   // Handle the error.
 // });
 
-function promisify(func){
+function promisify(func) {
 
     return (...args) => {
 
         return new Promise((resolve, reject) => {
-            
+
             func(...args, (err, res) => {
-                if(err){
+                if (err) {
                     reject(err);
-                }else{
+                } else {
                     resolve(res);
                 }
             })

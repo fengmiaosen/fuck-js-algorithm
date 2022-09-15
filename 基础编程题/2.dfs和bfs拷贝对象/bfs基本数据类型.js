@@ -13,6 +13,7 @@ function cloneDeep(obj) {
     let map = new WeakMap();
 
     let target = initTarget(obj);
+    
     // 原始值为对象、数组等引用类型
     if (target !== obj) {
         queue.push([obj, target]);

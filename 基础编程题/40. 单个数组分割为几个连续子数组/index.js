@@ -16,8 +16,6 @@ function splitArray(nums) {
     //排序
     nums = nums.sort((a, b) => a - b);
 
-    console.log('nums:', nums);
-
     const res = [];
     // 遍历一遍，相邻元素求差值，大于1则是不连续
     let subArr = [nums[0]];

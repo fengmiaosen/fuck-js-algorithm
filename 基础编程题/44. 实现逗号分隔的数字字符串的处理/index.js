@@ -9,19 +9,18 @@
 function convert(nums) {
 
     let res = [];
-
-    let tmp = nums[0];
+    let prev = nums[0];
 
     for (let i = 0; i < nums.length; i++) {
-        //遍历到数组末尾项的时候，nums[i+1]为undefined
+        // 遍历到数组末尾项的时候，nums[i+1]为undefined
         // 所以要判断是否等于1，也包括前面的正常数值的差值
         if (nums[i + 1] - nums[i] != 1) {
-            if (nums[i] !== tmp) {
-                res.push(`${tmp}~${nums[i]}`);
+            if (nums[i] !== prev) {
+                res.push(`${prev}~${nums[i]}`);
             } else {
-                res.push(tmp);
+                res.push(prev);
             }
-            tmp = nums[i + 1];
+            prev = nums[i + 1];
         }
     }
 

@@ -55,6 +55,6 @@ function normalize2(str) {
 
 const s = '[abc[bcd[def]]]'
 
-console.log('normalize obj:', normalize(s));
+console.log('normalize obj 1:', normalize(s));
 
 console.log('normalize obj 2:', normalize2(s));
