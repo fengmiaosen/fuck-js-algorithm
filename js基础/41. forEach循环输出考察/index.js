@@ -9,14 +9,14 @@ const square = num => {
     })
 }
 
-// // 原题目
-// //forEach是不能阻塞的，默认是请求并行发起，所以是同时输出1、4、9。
-// function test() {
-//   list.forEach(async x=> {
-//     const res = await square(x)
-//     console.log(res)
-//   })
-// }
+// 原题目
+//forEach是不能阻塞的，默认是请求并行发起，所以是同时输出1、4、9。
+function test() {
+  list.forEach(async x=> {
+    const res = await square(x)
+    console.log(res)
+  })
+}
 
 // 解决方案一：
 // 改用for循环

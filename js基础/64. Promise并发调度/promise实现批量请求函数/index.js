@@ -29,7 +29,7 @@ function multiRequest(urls = [], maxNum) {
                 return
             }
 
-            console.log("开始：" + current, new Date().toLocaleString());
+            // console.log("开始：" + current, new Date().toLocaleString());
 
             let url = urls[current];
             fetch(url).then((res) => {

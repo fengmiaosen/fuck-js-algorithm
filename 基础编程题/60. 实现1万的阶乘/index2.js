@@ -47,7 +47,7 @@ function multiply(num1, num2) {
             let value = (+num1[i]) * (+num2[j])
 
             // 乘积在结果数组中的位置
-            let hightIdx = i + j
+            let highIdx = i + j
             let lowIdx = i + j + 1
 
             let sum = res[lowIdx] + value
@@ -56,7 +56,7 @@ function multiply(num1, num2) {
             res[lowIdx] = sum % 10
 
             // 高位
-            res[hightIdx] = res[hightIdx] + Math.floor(sum / 10)
+            res[highIdx] = res[highIdx] + Math.floor(sum / 10)
 
         }
     }

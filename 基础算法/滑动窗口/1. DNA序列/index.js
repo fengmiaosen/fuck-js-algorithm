@@ -21,7 +21,7 @@
 // 输出：
 // CG
 // 说明：
-// ACGT长度为2的子串有AC,CG,GT3个，其中AC和GT2个的GC-Ratio都为0.5，CG为1，故输出CG   
+// ACGT长度为2的子串有AC,CG,GT3个，其中AC和GT 2个的GC-Ratio都为0.5，CG为1，故输出CG   
 // 示例2
 
 // 输入：
@@ -31,6 +31,7 @@
 // GCACG
 // 说明：
 // 虽然CGACC的GC-Ratio也是最高，但它是从左往右找到的GC-Ratio最高的第2个子串，所以只能输出GCACG。
+// https://leetcode.cn/problems/repeated-dna-sequences/description/
 
 /**
  * 

@@ -20,7 +20,7 @@ let vdom = {
     ]
 }
 
-//   把上诉虚拟Dom转化成下方真实Dom
+//   把上面的虚拟Dom转化成下方真实Dom
 //   <div id="app">
 //     <span>
 //       <a></a>

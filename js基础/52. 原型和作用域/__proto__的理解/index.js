@@ -10,6 +10,8 @@ console.log(a.__proto__);
 // Array.prototype.__proto__ = (new Object()).__proto__
 // (new Object()).__proto__ === Object.prototype
 // a.__proto__.__proto__ === Object.prototype
+// b.__proto__ === Object.prototype
+
 console.log(a.__proto__.__proto__);
 
 console.log(a.__proto__.__proto__.__proto__);

@@ -46,7 +46,7 @@ function getMax(str) {
     return res;
 }
 
-console.log(getMax('aaaaabbkeccjsbcccwqaaax')) //- {c:3}
+console.log(getMax('aaaaabbkeccjsbcccwqaaax')) 
 
 // 方法二
 function fn2(str) {
@@ -79,4 +79,4 @@ function fn2(str) {
     return res
 }
 
-console.log(fn2('aaabbkecccjsbcccwqaaax')) //- {c:3}
+console.log(fn2('aaabbkecccjsbcccwqaaax')) 

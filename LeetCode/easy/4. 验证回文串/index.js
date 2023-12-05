@@ -16,19 +16,19 @@
  * @param {*} str 
  */
 function isPalindrome(str) {
-    if(str.length ===0 ){
+    if (str.length === 0) {
         return true;
     }
 
     //正则匹配移除所有的非数字和字母的字符
     str = str.replace(/[^0-9a-zA-Z]/g, '');
 
-    let left=0;
-    let right=str.length-1;
+    let left = 0;
+    let right = str.length - 1;
 
-    while(left<right){
+    while (left < right) {
 
-        if(str[left].toLowerCase() !== str[right].toLowerCase()){
+        if (str[left].toLowerCase() !== str[right].toLowerCase()) {
             return false;
         }
 

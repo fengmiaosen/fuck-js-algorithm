@@ -1,11 +1,27 @@
 
+大致分为下面四步：
+
+Babel 具体见下方链接文件的代码
+https://github.com/caiyongmin/awesome-coding-javascript/tree/master/src/bundler/babel
+
+
 1. 词法分析
+
+input => tokenizer => tokens，先对输入代码进行分词，根据最小有效语法单元，对字符串进行切割。
+
    
 2. 语法分析
 
+tokens => parser => AST，然后进行语法分析，会涉及到读取、暂存、回溯、暂存点销毁等操作。
+
+
 3. AST转换
 
+AST => transformer => newAST，然后转换生成新的 AST
+
+
 4. AST输出
+newAST => codeGenerator => output，最后根据新生成的 AST 输出目标代码。
 
 
 ### 参考资料

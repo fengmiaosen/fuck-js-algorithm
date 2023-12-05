@@ -53,4 +53,6 @@ const firstMissingPositive2 = (nums) => {
 
 console.log(firstMissingPositive([3, 4, -1, 1]))
 
+console.log(firstMissingPositive([2, 3, -7, 6, 8, 1, -10, 15]))
+
 console.log(firstMissingPositive2([3, 4, -1, 1]))

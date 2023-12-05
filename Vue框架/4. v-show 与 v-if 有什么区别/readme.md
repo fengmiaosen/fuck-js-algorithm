@@ -4,3 +4,5 @@ v-if 是真正的条件渲染，因为它会确保在切换过程中条件块内
 v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 的 “display” 属性进行切换。
 
 所以，v-if 适用于在运行时很少改变条件，不需要频繁切换条件的场景；v-show 则适用于需要非常频繁切换条件的场景
+
+https://cn.vuejs.org/guide/essentials/conditional.html#v-if-vs-v-show

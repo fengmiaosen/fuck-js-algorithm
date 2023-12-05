@@ -20,3 +20,4 @@
 * https://juejin.im/post/5b72f0caf265da282809f3b5#heading-18
 * https://juejin.im/post/5e787b42e51d45272054dfae?utm_source=gold_browser_extension#heading-9
 * [小白都可以看懂的树与二叉树](https://github.com/sisterAn/JavaScript-Algorithms/issues/39)
+* [105. 从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/?utm_source=LCUS&utm_medium=ip_redirect&utm_campaign=transfer2china)

@@ -50,6 +50,7 @@ let isPalindrome = function (s) {
 var countSubstrings2 = function (s) {
     let res = 0
     let nums = s.length;
+    
     if (s.length < 2) {
         return nums
     }
