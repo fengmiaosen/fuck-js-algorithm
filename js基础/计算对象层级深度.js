@@ -28,6 +28,6 @@ const caseExample = {
     level1_2: {}
 };
 
-console.log(getObjectDepth(caseExample)); // 输出: 3
-console.log(getObjectDepth([{ a: 1 }, { b: 2 }])); // 输出: 3
-console.log(getObjectDepth([2, [3, 4]])); // 输出: 3
+console.log(getObjectDepth(caseExample));
+console.log(getObjectDepth([{ a: 1 }, { b: 2 }]));
+console.log(getObjectDepth([2, [3, 4]]));
