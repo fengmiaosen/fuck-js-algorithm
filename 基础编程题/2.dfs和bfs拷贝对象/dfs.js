@@ -1,61 +1,131 @@
-// 深度优先遍历 DFS
+// 深度优先遍历 DFS - 优化版本
 
+/**
+ * 深度优先遍历实现深拷贝
+ * @param {any} obj - 要拷贝的对象
+ * @param {WeakMap} map - 用于处理循环引用的WeakMap
+ * @returns {any} - 拷贝后的对象
+ */
 function cloneObj(obj, map = new WeakMap()) {
-    if (!obj || typeof obj !== 'object') {
+    // 1. 基础类型直接返回
+    if (obj === null || typeof obj !== 'object') {
         return obj;
     }
 
-    //对于循环引用，直接返回map中已存储的
+    // 2. 处理循环引用
     if (map.has(obj)) {
         return map.get(obj);
     }
 
-    // 此次要拷贝的对象
-    let target = Array.isArray(obj) ? [] : {};
+    // 3. 处理特殊对象类型
+    if (obj instanceof Date) {
+        return new Date(obj.getTime());
+    }
+    
+    if (obj instanceof RegExp) {
+        return new RegExp(obj.source, obj.flags);
+    }
+    
+    if (obj instanceof Map) {
+        const newMap = new Map();
+        map.set(obj, newMap);
+        for (const [key, value] of obj) {
+            newMap.set(cloneObj(key, map), cloneObj(value, map));
+        }
+        return newMap;
+    }
+    
+    if (obj instanceof Set) {
+        const newSet = new Set();
+        map.set(obj, newSet);
+        for (const value of obj) {
+            newSet.add(cloneObj(value, map));
+        }
+        return newSet;
+    }
 
-    //记录已拷贝过的对象
+    // 4. 处理数组和普通对象
+    const target = Array.isArray(obj) ? [] : {};
     map.set(obj, target);
 
-    for (let key in obj) {
-        //根据面试题目需要，此处可以对key做一些处理
-        const newKey = key;
-
-        if (obj.hasOwnProperty(key)) {
-            if (typeof obj[key] === 'object') {
-                if (!obj[key]) {
-                    target[newKey] = obj[key];
-                } else {
-                    target[newKey] = cloneObj(obj[key], map);
-                }
-            } else {
-                target[newKey] = obj[key];
-            }
+    // 5. 使用更高效的方式遍历对象
+    const keys = Object.keys(obj);
+    for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        const value = obj[key];
+        
+        // 6. 优化：避免重复的typeof检查
+        if (value !== null && typeof value === 'object') {
+            target[key] = cloneObj(value, map);
+        } else {
+            target[key] = value;
         }
     }
 
     return target;
 }
 
-
-let obj = {
-    a: {
-        a_bfff_x: [
-            1,
+// 测试用例
+function testCloneObj() {
+    console.log('=== DFS 深拷贝测试 ===');
+    
+    // 基础测试
+    const obj = {
+        a: {
+            a_bfff_x: [
+                1,
+                {
+                    c: 2
+                }
+            ]
+        },
+        x_booo: 1,
+        y: [
             {
-                c: 2
+                a_yppp: 22,
+                b: null,
+                c: {
+                    d: [12, 34, 67]
+                }
             }
         ]
-    },
-    x_booo: 1,
-    y: [
-        {
-            a_yppp: 22,
-            b: null,
-            c: {
-                d: [12, 34, 67]
-            }
-        }
-    ]
-};
+    };
 
-console.log('clone obj:', JSON.stringify(cloneObj(obj)));
+    // 循环引用测试
+    const circularObj = { name: 'circular' };
+    circularObj.self = circularObj;
+
+    // 特殊类型测试
+    const specialObj = {
+        date: new Date(),
+        regex: /test/g,
+        map: new Map([['key1', 'value1'], ['key2', 'value2']]),
+        set: new Set([1, 2, 3]),
+        null: null,
+        undefined: undefined,
+        number: 42,
+        string: 'hello',
+        boolean: true
+    };
+
+    console.log('原始对象:', JSON.stringify(obj, null, 2));
+    const cloned = cloneObj(obj);
+    console.log('克隆对象:', JSON.stringify(cloned, null, 2));
+    console.log('是否相等:', obj === cloned);
+    console.log('内容是否相等:', JSON.stringify(obj) === JSON.stringify(cloned));
+
+    // 性能测试
+    const largeObj = {};
+    for (let i = 0; i < 1000; i++) {
+        largeObj[`key${i}`] = { value: i, nested: { deep: i * 2 } };
+    }
+
+    console.log('\n=== 性能测试 ===');
+    const start = performance.now();
+    const clonedLarge = cloneObj(largeObj);
+    const end = performance.now();
+    console.log(`克隆1000个嵌套对象耗时: ${(end - start).toFixed(2)}ms`);
+}
+
+// 运行测试
+testCloneObj();
