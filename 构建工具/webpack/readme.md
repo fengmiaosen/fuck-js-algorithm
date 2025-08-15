@@ -1,4 +1,5 @@
 
+
 1. 热更新HMR原理
 
 关于webpack的热更新原理，面试官比较想听到的是工作流程和关键点，非“流水账”式的源码分析。我认为可以这样的介绍：
@@ -18,6 +19,9 @@ webpack-dev-server 主要包含了三个部分：
 6.Client对比当前 modules tree ，再次发请求到 Server 端获取新的JS模块；
 7.Client获取到新的JS模块后，会更新 modules tree并替换掉现有的模块；
 8.最后调用 module.hot.accept() 完成热更新；
+
+2. Module Federation原理
+
 
 
 ### 参考资料
