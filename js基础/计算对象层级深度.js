@@ -5,8 +5,9 @@
 // [2, [3, 4]] => 3
 
 function getObjectDepth(obj) {
+    // Fix: Return 1 for primitive values (including null) as per comments
     if (obj === null || typeof obj !== 'object') {
-        return 0;
+        return 1;
     }
 
     let maxDepth = 0;
@@ -31,3 +32,7 @@ const caseExample = {
 console.log(getObjectDepth(caseExample));
 console.log(getObjectDepth([{ a: 1 }, { b: 2 }]));
 console.log(getObjectDepth([2, [3, 4]]));
+// Test primitive values
+console.log(getObjectDepth(1)); // Should output 1
+console.log(getObjectDepth("test")); // Should output 1
+console.log(getObjectDepth(null)); // Should output 1
