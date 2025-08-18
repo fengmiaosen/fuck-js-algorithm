@@ -25,8 +25,9 @@ class Scheduler {
      */
     add(promiseFn) {
         return new Promise((resolve, reject) => {
-            // 将resolve挂载到当前任务的promise上面，便于执行任务后调用
+            // 将resolve/reject挂载到当前任务函数上，便于任务完成后回传结果
             promiseFn.resolve = resolve;
+            promiseFn.reject = reject;
 
             // 判断当前运行中的任务数是否超过最大并发数
             // 若没超过就逐个调用执行，即在前一个promise的then回调中递归调用执行下一个promise
@@ -42,18 +43,30 @@ class Scheduler {
     runTask(promiseFn) {
         this.concurrent++;
 
-        promiseFn().then(() => {
-            // 异步任务函数，变为success 状态
-            promiseFn.resolve();
+        Promise.resolve()
+            .then(() => promiseFn())
+            .then((value) => {
+                // 异步任务函数，变为 success 状态
+                promiseFn.resolve && promiseFn.resolve(value);
+            })
+            .catch((error) => {
+                // 失败时也需要推进队列，避免饿死
+                if (promiseFn.reject) {
+                    promiseFn.reject(error);
+                } else if (promiseFn.resolve) {
+                    // 如果调用方未监听 reject，保持兼容，仍然 resolve 以不中断后续任务
+                    promiseFn.resolve();
+                }
+            })
+            .finally(() => {
+                this.concurrent--;
 
-            this.concurrent--;
-
-            // 判断待执行任务队列中是否还有任务，如有则从队列头部弹出去执行
-            if (this.pendingTasks.length > 0) {
-                let headTask = this.pendingTasks.shift();
-                this.runTask(headTask);
-            }
-        })
+                // 判断待执行任务队列中是否还有任务，如有则从队列头部弹出去执行
+                if (this.pendingTasks.length > 0) {
+                    let headTask = this.pendingTasks.shift();
+                    this.runTask(headTask);
+                }
+            })
     }
 }
 

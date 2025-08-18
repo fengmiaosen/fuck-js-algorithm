@@ -10,10 +10,14 @@ function ipToInt(ip) {
     if (!result) return -1;
 
     for (var i = 1; i <= 4; i++) {
-        var h = parseInt(result[i]);
-        xH += (h > 15 ? "" : "0") + h.toString(16);
+        var h = parseInt(result[i], 10);
+        // ensure each octet is represented by exactly two hex digits
+        var hex = h.toString(16);
+        if (hex.length === 1) hex = "0" + hex;
+        xH += hex;
     }
-    return parseInt(xH, 16);
+    // Use Number instead of parseInt to avoid unintended radix inference and to be explicit
+    return Number.parseInt(xH, 16);
 }
 
 console.log('ip to num:', ipToInt('127.0.0.1'));
