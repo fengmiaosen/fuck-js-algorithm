@@ -1,20 +1,24 @@
 function quickSort(arr) {
+    // Create a copy to avoid modifying the original array
+    let workingArr = [...arr];
 
-    if (arr.length <= 1) {
-        return arr;
+    if (workingArr.length <= 1) {
+        return workingArr;
     }
 
-    let midIndex = Math.floor(arr.length / 2);
-    let midValue = arr.splice(midIndex, 1)[0];
+    let midIndex = Math.floor(workingArr.length / 2);
+    let midValue = workingArr[midIndex];  // Fixed: Use direct access instead of splice
 
     let leftArr = [];
     let rightArr = [];
 
-    for (let i = 0; i < arr.length; i++) {
-        if(arr[i]<midValue){
-            leftArr.push(arr[i]);
+    // Fixed: Iterate through all elements including the pivot
+    for (let i = 0; i < workingArr.length; i++) {
+        if (i === midIndex) continue;  // Skip the pivot element
+        if(workingArr[i] < midValue){
+            leftArr.push(workingArr[i]);
         } else {
-            rightArr.push(arr[i]);
+            rightArr.push(workingArr[i]);
         }
     }
 

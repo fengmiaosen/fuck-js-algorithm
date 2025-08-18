@@ -3,12 +3,18 @@
 // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor
 
 Function.prototype.bindFn = function (context, ...args) {
+    // Fixed: Add type checking for security
+    if (typeof this !== 'function') {
+        throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+    }
+    
     let fn = this
 
     function bound(...params) {
         //通过constructor判断调用方式，为 true , this指向实例，否则为 context
         context = this.constructor === fn ? this : context
-        fn.apply(context, [...args, ...params])
+        // Fixed: Return the result of the function call
+        return fn.apply(context, [...args, ...params])
     }
 
     // 为了避免bound的prototype被修改，增加一个中间空函数

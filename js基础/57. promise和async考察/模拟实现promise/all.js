@@ -55,7 +55,7 @@ function promiseAll2(promises) {
             Promise.resolve(p).then(res => {
                 console.log('idx:', idx);
                 count++;
-                result.push(res)
+                result[idx] = res  // Fixed: Use index to maintain order
 
                 if (count === len) {
                     resolve(result)
