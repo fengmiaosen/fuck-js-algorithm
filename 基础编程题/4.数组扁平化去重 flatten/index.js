@@ -37,9 +37,9 @@ console.log('flatten arr:', flatten(arr));
     let res = [];
 
     arr.forEach(item => {
-        if(Array.isArray(item)){
-            res.push(...flatten(item))
-        }else{
+        if (Array.isArray(item)) {
+            res.push(...flatten2(item))
+        } else {
             res.push(item);
         }
     });

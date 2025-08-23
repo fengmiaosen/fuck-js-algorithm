@@ -32,7 +32,20 @@ function intersect2(nums1, nums2) {
     return res
 }
 
+function intersect3(nums1, nums2) {
+    const set = new Set(nums1);
+    const result = new Set();
+    
+    for (const num of nums2) {
+        if (set.has(num)) {
+            result.add(num);
+        }
+    }
+    
+    return Array.from(result);
+}
 
 
 console.log('arr intersect:', intersect(arr1, arr2));
 console.log('arr intersect2:', intersect2(arr1, arr2));
+console.log('arr intersect3:', intersect3([1, 2, 2, 3, 4, 9], [2, 2, 3, 4, 9, 10]));
