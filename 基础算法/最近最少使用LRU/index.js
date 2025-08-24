@@ -11,8 +11,13 @@ class LRUCache {
     }
 
     add(key, value) {
-        // 当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据(即最早插入的)，从而为新数据留出空间
-        if (this.cache.size > this.max - 1) {
+        // 如果 key 已经存在，先删除再重新插入，以更新其最近使用时间
+        if (this.cache.has(key)) {
+            this.cache.delete(key);
+        }
+
+        // 当缓存容量达到上限时，在写入新数据之前删除最久未使用的数据 (即最早插入的)
+        if (this.cache.size >= this.max) {
             const firstKey = this.cache.keys().next().value;
             this.cache.delete(firstKey);
         }
@@ -21,13 +26,14 @@ class LRUCache {
     }
 
     get(key) {
-
-        const value = this.cache.get(key);
-        if (!value) {
+        // 如果缓存中不存在该 key，直接返回 -1
+        if (!this.cache.has(key)) {
             return -1;
         }
 
-        //先从map中删除当前访问的key，再重新添加到最新的顺序位置
+        const value = this.cache.get(key);
+
+        // 先从 map 中删除当前访问的 key，再重新添加到末尾，表示最近一次访问
         this.cache.delete(key);
         this.cache.set(key, value);
 

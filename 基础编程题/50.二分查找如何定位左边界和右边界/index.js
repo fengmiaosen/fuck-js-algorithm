@@ -25,6 +25,9 @@ function findLeft(nums, target) {
     }
 
     // TODO 边界判断
+    if (left >= nums.length || nums[left] !== target) {
+        return -1; // target 不存在
+    }
 
     return left;
 }
@@ -53,7 +56,10 @@ function findRight(nums, target) {
     }
 
     // TODO 边界判断
-    
+    if (right < 0 || nums[right] !== target) {
+        return -1; // target 不存在
+    }
+
     return right;
 }
 
