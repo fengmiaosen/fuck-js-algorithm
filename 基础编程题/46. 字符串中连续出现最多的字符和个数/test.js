@@ -1,31 +1,37 @@
+// // 找出字符串中连续出现最多的字符和个数
 
-function getMax(str) {
+// 'abcaakjbb' => {'a':2,'b':2}
+// 'abbkejsbcccwqaa' => {'c':3}
+
+// 注意：题目说的是连续出现，注意连续二字
+
+function findMaxStr(str) {
     let res = {}
-    let map = new Map()
+    let map = {}
     let max = 0
-    let prevChar = ''
 
-    for (let char of str) {
-        if (prevChar === char) {
-            map.set(char, map.get(char) + 1)
+    let prev = ''
 
-            if (map.get(char) > max) {
-                max = map.get(char)
-                res = {
-                    [char]: map.get(char)
-                }
-            } else if (map.get(char) === max) {
-                res[char] = max
-            }
+    for (let i = 0; i < str.length; i++) {
+        let cur = str[i]
 
+        if (prev === cur) {
+            map[cur]++
         } else {
-            map.set(char, 1)
-            prevChar = char
+            map[cur] = 1
+            prev = cur
+        }
+
+        if(map[cur] > max) {
+            max = map[cur]
+            res = {[cur]: max}
+        } else if(map[cur] === max) {
+            res[cur] = max
         }
     }
 
     return res
 }
 
-console.log(getMax('aaaaabbkeccjsbcccwqaaax')) //- {c:3}
-
+console.log(findMaxStr('abcaakjbb'))
+console.log(findMaxStr('abbkejsbcccwqaa'))

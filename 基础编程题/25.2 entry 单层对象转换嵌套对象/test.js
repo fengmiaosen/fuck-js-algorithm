@@ -24,20 +24,19 @@ let entry = {
 function convertObj(entry) {
     let res = {}
 
-    for (let key in entry) {
-        if (key.includes('.')) {
-            let keyList = key.split('.')
-            keyList.reduce((acc, cur, idx) => {
-                if (idx === keyList.length - 1) {
-                    acc[cur] = entry[key]
-                } else {
-                    acc[cur] = acc[cur] || {}
+    for(let key in entry){
+        if(key.includes('.')){
+            let list = key.split('.');
+            list.reduce((acc, cur, idx) => {
+                if(idx === list.length - 1){
+                    acc[cur] = entry[key];
+                }else{
+                    acc[cur] = acc[cur] || {};
                 }
-
                 return acc[cur]
             }, res)
-        } else {
-            res[key] = entry[key]
+        }else{
+            res[key] = entry[key];
         }
     }
 

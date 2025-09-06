@@ -1,5 +1,4 @@
 // 不使用JS数组API，查找有序数列最先出现的位置和最后出现的位置
-// https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/er-fen-cha-zhao-xiang-jie#san-xun-zhao-you-ce-bian-jie-de-er-fen-cha-zhao
 
 /**
  * 寻找目标值左侧边界
@@ -24,7 +23,12 @@ function findLeft(nums, target) {
         }
     }
 
-    // TODO 边界判断
+
+    // 1. 数组越界
+    // 2. 数组元素不等于target
+    if (left >= nums.length || nums[left] !== target) {
+        return -1
+    }
 
     return left;
 }
@@ -52,7 +56,11 @@ function findRight(nums, target) {
         }
     }
 
-    // TODO 边界判断
+    // 1. 数组越界
+    // 2. 数组元素不等于target
+    if (right < 0 || nums[right] !== target) {
+        return -1
+    }
     
     return right;
 }

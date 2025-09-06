@@ -36,6 +36,7 @@ function findMidValue(nums1, nums2) {
         }
     }
 
+    // 合并完后，如果有剩余元素，直接添加到数组后面
     if (nums1.length) {
         nums.push(...nums1);
     }

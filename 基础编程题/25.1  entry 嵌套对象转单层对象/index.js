@@ -19,6 +19,13 @@ var entry = {
 //     'a.d.xx': 'adxx',
 //     'a.e': 'ae'
 //   }
+/**
+ * 扁平化对象
+ * @param {object} obj 
+ * @param {string} parentKey 
+ * @param {object} result 
+ * @returns {object}
+ */
 function flatObj(obj, parentKey = '', result = {}) {
 
   for (let key in obj) {

@@ -19,7 +19,7 @@ function fn(num) {
 }
 
 console.time('fn')
-console.log('num dp:', fn(50))
+console.log('num dp 50:', fn(50))
 console.timeEnd('fn')
 
 /**

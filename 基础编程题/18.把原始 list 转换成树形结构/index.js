@@ -54,7 +54,7 @@ let list = [
 
 /**
  * 方法一
- * @param {*} list 
+ * @param {array} list 
  */
 function convert1(list) {
   const res = []

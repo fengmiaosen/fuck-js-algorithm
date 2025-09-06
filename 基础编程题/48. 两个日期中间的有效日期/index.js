@@ -1,4 +1,9 @@
-
+/**
+ * 
+ * @param {number} startDate 开始时间
+ * @param {number} endDate 结束时间
+ * @returns {string[]} 有效日期数组
+ */
 function rangeDate(startDate, endDate) {
 
     const startTime = new Date(startDate).getTime()

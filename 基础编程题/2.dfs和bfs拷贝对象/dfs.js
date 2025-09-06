@@ -95,19 +95,6 @@ function testCloneObj() {
     const circularObj = { name: 'circular' };
     circularObj.self = circularObj;
 
-    // 特殊类型测试
-    const specialObj = {
-        date: new Date(),
-        regex: /test/g,
-        map: new Map([['key1', 'value1'], ['key2', 'value2']]),
-        set: new Set([1, 2, 3]),
-        null: null,
-        undefined: undefined,
-        number: 42,
-        string: 'hello',
-        boolean: true
-    };
-
     console.log('原始对象:', JSON.stringify(obj, null, 2));
     const cloned = cloneObj(obj);
     console.log('克隆对象:', JSON.stringify(cloned, null, 2));

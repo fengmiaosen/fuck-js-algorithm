@@ -4,27 +4,23 @@
 // 示例一: 'abc' --> {value: 'abc'}
 // 示例二：'[abc[bcd[def]]]' --> {value: 'abc', children: {value: 'bcd', children: {value: 'def'}}}
 
+/**
+ * 
+ * @param {string} str 
+ * @returns 
+ */
 function normalize(str) {
-    if (str.length === 0) {
-        return {};
-    }
+    let res = {}
+    // array
+    let arrs = str.split(/[\[\]]/g).filter(t => t)
 
-    let arr = str.split(/[\[\]]/g).filter(item => item);
-    let res = null
-
-    while (arr.length) {
-        let cur = arr.pop()
-
-        let tmp = {
-            value: cur
+    arrs.reduce((acc, cur, idx) => {
+        acc.value = cur;
+        if (idx !== arrs.length - 1) {
+            acc.children = {};
+            return acc.children;
         }
-
-        if(res){
-            tmp.children = res
-        }
-
-        res = tmp
-    }
+    }, res)
 
     return res
 }

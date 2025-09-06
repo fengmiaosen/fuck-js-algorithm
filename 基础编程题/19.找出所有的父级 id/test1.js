@@ -39,23 +39,20 @@ const data = [{
 
 function findPath(list, id) {
 
-    function dfs(arr) {
-
-        for (let item of arr) {
-            if (item.id === id) {
-                return [id]
-            } else {
-                if (item.children?.length) {
-                    let res = dfs(item.children)
-                    if (res) {
-                        return [item.id, ...res]
-                    }
+    function dfs(arr, id) {
+        for(const item of arr){
+            if(item.id === id){
+                return [id];
+            }else if(item.children?.length){
+                const res = dfs(item.children, id);
+                if(res){
+                    return [item.id, ...res];
                 }
             }
         }
     }
 
-    return dfs(list)
+    return dfs(list, id);
 }
 
-console.log(findPath(data, '122'))
+console.log(findPath(data, '122'));

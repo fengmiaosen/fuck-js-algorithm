@@ -311,8 +311,8 @@ class BST {
         const res = []; // 存放遍历结果
 
         // 两层循环
-        // 外循环负责遍历层级结构,
-        // 内循环负责遍历每一层的子节点
+        // 外循环负责遍历层级结构的节点
+        // 内循环负责遍历每一层节点的左右子节点
         while (queue.length) {
             const subRes = [];
             const level = queue.length; // 当前层的节点数

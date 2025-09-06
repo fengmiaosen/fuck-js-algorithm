@@ -21,6 +21,7 @@ function reverse(num) {
 
         res = res * 10 + pop
 
+        // 除以10，去掉最后一位
         num = Math.floor(num / 10)
     }
 

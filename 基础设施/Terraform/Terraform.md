@@ -1,6 +1,8 @@
  ## What is Terraform
  
- Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. You can then use a consistent workflow to provision and manage all of your infrastructure throughout its lifecycle. Terraform can manage low-level components like compute, storage, and networking resources, as well as high-level components like DNS entries and SaaS features.
+ [Terraform](https://www.terraform.io)
+
+Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. You can then use a consistent workflow to provision and manage all of your infrastructure throughout its lifecycle. Terraform can manage low-level components like compute, storage, and networking resources, as well as high-level components like DNS entries and SaaS features.
 
 Terraform is an infrastructure as code (IaC) tool that allows users to define and provision data center infrastructure using a declarative configuration language. It enables automation of infrastructure management across various platforms, including cloud providers like AWS, Azure, and Google Cloud, as well as on-premises environments. 
 
