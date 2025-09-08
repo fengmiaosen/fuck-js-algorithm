@@ -13,12 +13,20 @@
 * CI[持续集成（Continuous Integration）]
 * CD[持续交付（Continuous Delivery）]，也可以说是 CD[持续部署（Continuous Deployment）]
 
-## gitlab + jenkins 持续集成
+### CI & CD 方案
 
-本地机器上写代码提交代码，push 到 git 远程仓库git hook 触发 jenkins 的构建 job （自动）jenkins job 中拉取项目代码，运行 npm run unit 和 npm run build，如果失败，发送邮件通知相关人。（自动）jenkins job 中执行测试服务器的部署脚本 （自动）
+### gitlab + jenkins 持续集成
+
+本地机器上写代码提交代码，push 到 git 远程仓库
+触发 git hooks 
+触发 jenkins 的构建 job （自动）
+jenkins job 中拉取项目代码
+运行 npm run unit 和 npm run build
+如果失败，发送邮件通知相关人。
+（自动）jenkins job 中执行测试服务器的部署脚本 （自动）
 
 
-## github action + vercel deploy + AWS
+### github action + vercel deploy + AWS
 
 * next.js
 * react
