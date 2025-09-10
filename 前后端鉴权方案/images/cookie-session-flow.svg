@@ -1,0 +1,68 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">Cookie/Session 鉴权流程图</text>
+  
+  <!-- Client -->
+  <rect x="50" y="80" width="120" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+  <text x="110" y="115" text-anchor="middle" font-size="14" font-weight="bold" fill="#1976d2">客户端</text>
+  
+  <!-- Server -->
+  <rect x="630" y="80" width="120" height="60" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="5"/>
+  <text x="690" y="115" text-anchor="middle" font-size="14" font-weight="bold" fill="#7b1fa2">服务器</text>
+  
+  <!-- Session Store -->
+  <rect x="630" y="200" width="120" height="60" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="5"/>
+  <text x="690" y="225" text-anchor="middle" font-size="12" font-weight="bold" fill="#f57c00">Session</text>
+  <text x="690" y="245" text-anchor="middle" font-size="12" font-weight="bold" fill="#f57c00">存储</text>
+  
+  <!-- Step 1: Login Request -->
+  <line x1="170" y1="160" x2="630" y2="160" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="155" text-anchor="middle" font-size="12" fill="#4caf50">1. 登录请求 (用户名/密码)</text>
+  
+  <!-- Step 2: Create Session -->
+  <line x1="690" y1="140" x2="690" y2="200" stroke="#ff9800" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="720" y="175" font-size="12" fill="#ff9800">2. 创建Session</text>
+  
+  <!-- Step 3: Set Cookie -->
+  <line x1="630" y1="180" x2="170" y2="180" stroke="#9c27b0" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="175" text-anchor="middle" font-size="12" fill="#9c27b0">3. 设置Cookie (Session ID)</text>
+  
+  <!-- Step 4: Subsequent Request -->
+  <line x1="170" y1="300" x2="630" y2="300" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="295" text-anchor="middle" font-size="12" fill="#2196f3">4. 后续请求 (携带Cookie)</text>
+  
+  <!-- Step 5: Validate Session -->
+  <line x1="690" y1="280" x2="690" y2="260" stroke="#ff5722" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="720" y="275" font-size="12" fill="#ff5722">5. 验证Session</text>
+  
+  <!-- Step 6: Response -->
+  <line x1="630" y1="320" x2="170" y2="320" stroke="#795548" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="315" text-anchor="middle" font-size="12" fill="#795548">6. 返回响应数据</text>
+  
+  <!-- Cookie Details -->
+  <rect x="50" y="380" width="300" height="120" fill="#f5f5f5" stroke="#666" stroke-width="1" rx="5"/>
+  <text x="60" y="400" font-size="14" font-weight="bold" fill="#333">Cookie 特点：</text>
+  <text x="60" y="420" font-size="12" fill="#666">• 浏览器自动携带</text>
+  <text x="60" y="440" font-size="12" fill="#666">• 受同源策略限制</text>
+  <text x="60" y="460" font-size="12" fill="#666">• 可设置过期时间</text>
+  <text x="60" y="480" font-size="12" fill="#666">• HttpOnly 防止 XSS</text>
+  
+  <!-- Session Details -->
+  <rect x="450" y="380" width="300" height="120" fill="#f5f5f5" stroke="#666" stroke-width="1" rx="5"/>
+  <text x="460" y="400" font-size="14" font-weight="bold" fill="#333">Session 特点：</text>
+  <text x="460" y="420" font-size="12" fill="#666">• 服务端存储用户状态</text>
+  <text x="460" y="440" font-size="12" fill="#666">• 通过 Session ID 关联</text>
+  <text x="460" y="460" font-size="12" fill="#666">• 安全性较高</text>
+  <text x="460" y="480" font-size="12" fill="#666">• 分布式部署复杂</text>
+  
+  <!-- Legend -->
+  <text x="50" y="550" font-size="14" font-weight="bold" fill="#333">图例：</text>
+  <line x1="120" y1="545" x2="160" y2="545" stroke="#4caf50" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="170" y="550" font-size="12" fill="#666">请求/响应流程</text>
+</svg>

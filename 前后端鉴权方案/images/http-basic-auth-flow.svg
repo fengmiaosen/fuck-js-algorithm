@@ -1,0 +1,75 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #333; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #333; }
+      .step { font-family: Arial, sans-serif; font-size: 11px; fill: #666; }
+      .code { font-family: 'Courier New', monospace; font-size: 10px; fill: #444; }
+      .client-box { fill: #e6f3ff; stroke: #0066cc; stroke-width: 2; rx: 8; }
+      .server-box { fill: #fff0e6; stroke: #ff6600; stroke-width: 2; rx: 8; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .error-arrow { stroke: #cc0000; stroke-width: 2; fill: none; marker-end: url(#errorhead); }
+      .success-arrow { stroke: #009900; stroke-width: 2; fill: none; marker-end: url(#successhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+    <marker id="errorhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000" />
+    </marker>
+    <marker id="successhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#009900" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">HTTP 基本鉴权流程图</text>
+  
+  <!-- Client -->
+  <rect x="50" y="80" width="120" height="60" class="client-box" />
+  <text x="110" y="110" text-anchor="middle" class="label">客户端</text>
+  <text x="110" y="125" text-anchor="middle" class="step">(浏览器)</text>
+  
+  <!-- Server -->
+  <rect x="600" y="80" width="120" height="60" class="server-box" />
+  <text x="660" y="110" text-anchor="middle" class="label">服务器</text>
+  <text x="660" y="125" text-anchor="middle" class="step">(www.baidu.com)</text>
+  
+  <!-- Step 1: Initial Request -->
+  <line x1="170" y1="100" x2="590" y2="100" class="arrow" />
+  <text x="380" y="95" text-anchor="middle" class="step">1. 请求受限资源</text>
+  <rect x="200" y="110" width="380" height="40" fill="#f9f9f9" stroke="#ccc" stroke-width="1" rx="4" />
+  <text x="210" y="125" class="code">GET /list/ HTTP/1.1</text>
+  <text x="210" y="140" class="code">Host: www.baidu.com</text>
+  
+  <!-- Step 2: 401 Response -->
+  <line x1="590" y1="180" x2="180" y2="180" class="error-arrow" />
+  <text x="385" y="175" text-anchor="middle" class="step">2. 返回401未授权</text>
+  <rect x="200" y="190" width="380" height="55" fill="#fff5f5" stroke="#cc0000" stroke-width="1" rx="4" />
+  <text x="210" y="205" class="code">HTTP/1.1 401 Unauthorized</text>
+  <text x="210" y="220" class="code">WWW-Authenticate: Basic realm="baidu.com"</text>
+  <text x="210" y="235" class="step">要求进行身份验证</text>
+  
+  <!-- Step 3: User Input -->
+  <rect x="50" y="270" width="120" height="40" fill="#ffffcc" stroke="#ffcc00" stroke-width="1" rx="4" />
+  <text x="110" y="290" text-anchor="middle" class="step">3. 用户输入</text>
+  <text x="110" y="305" text-anchor="middle" class="step">用户名和密码</text>
+  
+  <!-- Step 4: Authenticated Request -->
+  <line x1="170" y1="320" x2="590" y2="320" class="arrow" />
+  <text x="380" y="315" text-anchor="middle" class="step">4. 携带认证信息重新请求</text>
+  <rect x="200" y="330" width="380" height="55" fill="#f0f8ff" stroke="#0066cc" stroke-width="1" rx="4" />
+  <text x="210" y="345" class="code">GET /list/ HTTP/1.1</text>
+  <text x="210" y="360" class="code">Host: www.baidu.com</text>
+  <text x="210" y="375" class="code">Authorization: Basic aHR0cHdhdGNoOmY=</text>
+  
+  <!-- Step 5: Success Response -->
+  <line x1="590" y1="410" x2="180" y2="410" class="success-arrow" />
+  <text x="385" y="405" text-anchor="middle" class="step">5. 返回受限资源</text>
+  <rect x="200" y="420" width="380" height="40" fill="#f0fff0" stroke="#009900" stroke-width="1" rx="4" />
+  <text x="210" y="435" class="code">HTTP/1.1 200 OK</text>
+  <text x="210" y="450" class="code">Content-Type: application/json</text>
+  
+  <!-- Notes -->
+  <text x="50" y="485" class="step" style="font-style: italic;">注：Base64编码格式为 username:password</text>
+</svg>
