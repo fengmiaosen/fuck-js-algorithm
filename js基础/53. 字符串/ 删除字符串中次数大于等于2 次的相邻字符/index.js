@@ -1,4 +1,5 @@
 // 参考 https://github.com/sisterAn/JavaScript-Algorithms/issues/28
+// 删除字符串中出现次数 >= 2 次的相邻字符
 
 var removeDuplicates = function (S) {
     if (S.length < 2) {

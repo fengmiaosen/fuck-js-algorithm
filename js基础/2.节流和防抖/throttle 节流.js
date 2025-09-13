@@ -1,4 +1,18 @@
-// 节流
+// Throttling: A technique to limit the execution rate of a function.
+// It ensures that a function is called at most once in a specified time period.
+// Common use cases: scroll events, window resize, continuous button clicks
+// 节流(throttle)：限制函数在一定时间内只能执行一次
+// 常用场景：
+// 1. 滚动事件处理 (scroll events)
+// 2. 窗口大小调整 (window resize)
+// 3. 按钮连续点击 (continuous button clicks)
+// 4. 搜索框输入联想 (search input suggestions)
+
+// 实现：
+// 1. 首次立即执行
+// 2. 非首次，判断时间间隔是否大于指定时间间隔
+// 3. 大于，执行函数，更新时间
+// 4. 小于，等待
 
 function throttle(fn, delay) {
 

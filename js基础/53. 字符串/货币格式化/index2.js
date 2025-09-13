@@ -17,6 +17,11 @@ function convert3(str) {
     return new Intl.NumberFormat().format(parseInt(str))
 }
 
+/**
+ * 
+ * @param {string} num 金额字符串
+ * @returns 
+ */
 function convert4(num){
     return num.toLocaleString('en-US')
 }

@@ -14,8 +14,9 @@ function test() {
     }
 }
 
+// 1 2 from_try
 console.log('test1 =======');
-console.log(test()); // 1 2 from_try
+console.log(test()); 
 
 function test2() {
     try {
