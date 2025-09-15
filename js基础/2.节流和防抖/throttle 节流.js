@@ -15,34 +15,33 @@
 // 4. 小于，等待
 
 function throttle(fn, delay) {
-
-    let timer = null;
     let lastTime = 0;
+    let timer = null;
 
     return (...args) => {
-
         const nowTime = Date.now();
         const gapTime = nowTime - lastTime;
 
-        // 非首次
-        if (lastTime && gapTime < delay) {
-            timer && clearTimeout(timer);
-
+        // 如果距离上次执行的时间间隔大于等于delay，立即执行
+        if (gapTime >= delay) {
+            lastTime = nowTime;
+            fn.apply(this, args);
+            // 清除可能存在的定时器
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
+            }
+        } else {
+            // 如果距离上次执行的时间间隔小于delay，设置定时器在剩余时间后执行
+            if (timer) {
+                clearTimeout(timer);
+            }
             timer = setTimeout(() => {
-                // 计时器回调函数执行完毕，更新lastTime用于下一次比较
                 lastTime = Date.now();
-
                 fn.apply(this, args);
+                timer = null;
             }, delay - gapTime);
-
-            return;
         }
-
-        //第一次
-        lastTime = nowTime;
-        fn.apply(this, args);
-        timer && clearTimeout(timer);
-
     }
 }
 
