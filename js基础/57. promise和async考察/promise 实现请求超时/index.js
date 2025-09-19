@@ -7,7 +7,8 @@ function promiseWithTimeout(url, timeout = 20) {
 
     return new Promise((resolve, reject) => {
         fetch(url).then(data => data.text()).then(data => resolve(data)); // fetch 先得到结果就 resolve
-        setTimeout(() => reject(Error('time is out!')), timeout); // 时间到了还没 fetch 到就 reject
+        // 时间到了还没 fetch 到就 reject
+        setTimeout(() => reject(Error('time is out!')), timeout); 
     });
 }
 

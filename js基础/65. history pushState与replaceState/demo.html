@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History API 与 popstate 事件演示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        button {
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #005a87;
+        }
+        .log {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+        .clear-btn {
+            background: #e53e3e;
+        }
+        .clear-btn:hover {
+            background: #c53030;
+        }
+        .info {
+            background: #bee3f8;
+            border: 1px solid #90cdf4;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .current-state {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>History API 与 popstate 事件演示</h1>
+    
+    <div class="info">
+        <strong>核心要点：</strong>
+        <ul>
+            <li>调用 <code>history.pushState()</code> 或 <code>history.replaceState()</code> <strong>不会</strong>触发 <code>popstate</code> 事件</li>
+            <li>只有用户点击浏览器前进/后退按钮，或调用 <code>history.back()</code>、<code>history.forward()</code>、<code>history.go()</code> 才会触发</li>
+        </ul>
+    </div>
+
+    <div class="current-state">
+        <h3>当前状态</h3>
+        <div id="currentInfo">
+            <p><strong>URL:</strong> <span id="currentUrl"></span></p>
+            <p><strong>State:</strong> <span id="currentState"></span></p>
+            <p><strong>Title:</strong> <span id="currentTitle"></span></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>测试 pushState 和 replaceState（不会触发 popstate）</h3>
+        <button onclick="testPushState()">调用 pushState</button>
+        <button onclick="testReplaceState()">调用 replaceState</button>
+        <button onclick="testPushStateMultiple()">连续调用 pushState</button>
+    </div>
+
+    <div class="container">
+        <h3>测试会触发 popstate 的操作</h3>
+        <button onclick="testBack()">调用 history.back()</button>
+        <button onclick="testForward()">调用 history.forward()</button>
+        <button onclick="testGo()">调用 history.go(-1)</button>
+        <p><em>提示：也可以直接点击浏览器的前进/后退按钮来触发 popstate 事件</em></p>
+    </div>
+
+    <div class="container">
+        <h3>实际应用：简单路由器</h3>
+        <button onclick="navigateToHome()">导航到首页</button>
+        <button onclick="navigateToAbout()">导航到关于页面</button>
+        <button onclick="navigateToContact()">导航到联系页面</button>
+        <div id="pageContent" style="margin-top: 10px; padding: 10px; background: #f9f9f9; border-radius: 4px;">
+            当前页面：首页
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>事件日志</h3>
+        <button class="clear-btn" onclick="clearLog()">清空日志</button>
+        <div id="eventLog" class="log"></div>
+    </div>
+
+    <script>
+        let logCounter = 0;
+        
+        // 日志记录函数
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logElement = document.getElementById('eventLog');
+            const color = type === 'event' ? '#4ade80' : type === 'action' ? '#60a5fa' : '#e2e8f0';
+            logElement.innerHTML += `<div style="color: ${color}">[${timestamp}] ${++logCounter}. ${message}</div>`;
+            logElement.scrollTop = logElement.scrollHeight;
+            updateCurrentInfo();
+        }
+        
+        // 更新当前状态显示
+        function updateCurrentInfo() {
+            document.getElementById('currentUrl').textContent = window.location.href;
+            document.getElementById('currentState').textContent = JSON.stringify(history.state);
+            document.getElementById('currentTitle').textContent = document.title;
+        }
+        
+        // 清空日志
+        function clearLog() {
+            document.getElementById('eventLog').innerHTML = '';
+            logCounter = 0;
+        }
+        
+        // 监听 popstate 事件
+        window.addEventListener('popstate', function(event) {
+            log(`🎯 popstate 事件被触发！状态: ${JSON.stringify(event.state)}`, 'event');
+            
+            // 如果是路由状态，更新页面内容
+            if (event.state && event.state.page) {
+                updatePageContent(event.state.page, event.state.title);
+            }
+        });
+        
+        // 测试 pushState
+        function testPushState() {
+            const state = { test: 'pushState', timestamp: Date.now() };
+            const url = `/test-push-${Date.now()}`;
+            
+            log(`📝 调用 history.pushState() - URL: ${url}`, 'action');
+            history.pushState(state, 'Test Push', url);
+            log(`✅ pushState 调用完成 - popstate 没有被触发`, 'action');
+        }
+        
+        // 测试 replaceState
+        function testReplaceState() {
+            const state = { test: 'replaceState', timestamp: Date.now() };
+            const url = `/test-replace-${Date.now()}`;
+            
+            log(`📝 调用 history.replaceState() - URL: ${url}`, 'action');
+            history.replaceState(state, 'Test Replace', url);
+            log(`✅ replaceState 调用完成 - popstate 没有被触发`, 'action');
+        }
+        
+        // 测试连续 pushState
+        function testPushStateMultiple() {
+            log(`📝 连续调用 pushState 3次`, 'action');
+            
+            for (let i = 1; i <= 3; i++) {
+                const state = { test: 'multiple', step: i };
+                const url = `/test-multiple-${i}`;
+                history.pushState(state, `Step ${i}`, url);
+                log(`  ${i}. pushState 完成 - URL: ${url}`, 'action');
+            }
+            
+            log(`✅ 连续 pushState 完成 - popstate 没有被触发`, 'action');
+        }
+        
+        // 测试 back
+        function testBack() {
+            log(`🔙 调用 history.back() - 这会触发 popstate`, 'action');
+            history.back();
+        }
+        
+        // 测试 forward
+        function testForward() {
+            log(`🔜 调用 history.forward() - 这会触发 popstate`, 'action');
+            history.forward();
+        }
+        
+        // 测试 go
+        function testGo() {
+            log(`↩️ 调用 history.go(-1) - 这会触发 popstate`, 'action');
+            history.go(-1);
+        }
+        
+        // 简单路由器实现
+        function navigateToHome() {
+            const state = { page: 'home', title: '首页' };
+            log(`🏠 导航到首页 - 使用 pushState`, 'action');
+            history.pushState(state, '首页', '/home');
+            updatePageContent('home', '首页');
+            log(`✅ 导航完成 - 手动更新了页面内容`, 'action');
+        }
+        
+        function navigateToAbout() {
+            const state = { page: 'about', title: '关于页面' };
+            log(`ℹ️ 导航到关于页面 - 使用 pushState`, 'action');
+            history.pushState(state, '关于页面', '/about');
+            updatePageContent('about', '关于页面');
+            log(`✅ 导航完成 - 手动更新了页面内容`, 'action');
+        }
+        
+        function navigateToContact() {
+            const state = { page: 'contact', title: '联系页面' };
+            log(`📞 导航到联系页面 - 使用 pushState`, 'action');
+            history.pushState(state, '联系页面', '/contact');
+            updatePageContent('contact', '联系页面');
+            log(`✅ 导航完成 - 手动更新了页面内容`, 'action');
+        }
+        
+        function updatePageContent(page, title) {
+            const content = {
+                'home': '当前页面：首页 - 欢迎来到首页！',
+                'about': '当前页面：关于页面 - 这里是关于我们的信息。',
+                'contact': '当前页面：联系页面 - 联系方式：example@email.com'
+            };
+            
+            document.getElementById('pageContent').textContent = content[page] || '未知页面';
+            document.title = title || '演示页面';
+        }
+        
+        // 页面加载时初始化
+        window.addEventListener('load', function() {
+            log(`🚀 页面加载完成，开始监听 popstate 事件`, 'info');
+            updateCurrentInfo();
+            
+            // 设置初始状态
+            const initialState = { page: 'home', title: '首页' };
+            history.replaceState(initialState, '首页', window.location.pathname);
+            log(`📋 设置初始状态完成`, 'info');
+        });
+        
+        // 监听页面可见性变化
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                updateCurrentInfo();
+            }
+        });
+    </script>
+</body>
+</html>
