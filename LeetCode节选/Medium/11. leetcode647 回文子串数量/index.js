@@ -86,3 +86,24 @@ console.log(countSubstrings("aaa"))
 
 console.log(countSubstrings2("abc"))
 console.log(countSubstrings2("aaa"))
+// Test case 1: Empty string
+console.log(countSubstrings("")) // Expected: 0
+
+// Test case 2: Single character
+console.log(countSubstrings("x")) // Expected: 1
+
+// Test case 3: String with repeating characters
+console.log(countSubstrings("aaaa")) // Expected: 10
+
+// Test case 4: String with mixed characters
+console.log(countSubstrings("racecar")) // Expected: 10
+
+// Test case 5: String with special characters
+console.log(countSubstrings("!@#@!")) // Expected: 7
+
+// Test the second implementation
+console.log(countSubstrings2("")) // Expected: 0
+console.log(countSubstrings2("x")) // Expected: 1
+console.log(countSubstrings2("aaaa")) // Expected: 10
+console.log(countSubstrings2("racecar")) // Expected: 10
+console.log(countSubstrings2("!@#@!")) // Expected: 7

@@ -55,3 +55,5 @@ function longestPalindrome(s) {
 }
 
 console.log(longestPalindrome('babad'))
+console.log(longestPalindrome("racecar")) 
+console.log(longestPalindrome("!@#@!")) 

@@ -7,9 +7,11 @@ ReactElement 对象(type 定义在shared 包中)
 fiber 对象(type 类型的定义在ReactInternalTypes.js中)
 
 fiber对象是通过ReactElement对象进行创建的, 多个fiber对象构成了一棵fiber树, fiber树是构造DOM树的数据模型, fiber树的任何改动, 最后都体现到DOM树.
+
 DOM 对象: 文档对象模型
 
 DOM将文档解析为一个由节点和对象（包含属性和方法的对象）组成的结构集合, 也就是常说的DOM树.
+
 JavaScript可以访问和操作存储在 DOM 中的内容, 也就是操作DOM对象, 进而触发 UI 渲染.
 它们之间的关系反映了我们书写的 JSX 代码到 DOM 节点的转换过程:
 
@@ -18,8 +20,11 @@ JavaScript可以访问和操作存储在 DOM 中的内容, 也就是操作DOM对
 注意:
 
 开发人员能够控制的是JSX, 也就是ReactElement对象.
+
 fiber树是通过ReactElement生成的, 如果脱离了ReactElement,fiber树也无从谈起. 所以是ReactElement树(不是严格的树结构, 为了方便也称为树)驱动fiber树.
+
 fiber树是DOM树的数据模型, fiber树驱动DOM树
+
 开发人员通过编程只能控制ReactElement树的结构, ReactElement树驱动fiber树, fiber树再驱动DOM树, 最后展现到页面上. 所以fiber树的构造过程, 实际上就是ReactElement对象到fiber对象的转换过程.
 
 
@@ -28,8 +33,10 @@ fiber树是DOM树的数据模型, fiber树驱动DOM树
 阅读了这篇文章An Introduction to React Fiber - The Algorithm Behind React。
 学习Fiber之前建议先学习Virtual DOM，Fiber是对Virtual DOM的一种升级。
 
-Virtual DOM使用栈来调度需要更新的内容，中间无法中断、暂停。Fiber支持中断，在浏览器渲染帧里面分片执行更新任务。
-Fiber解构让虚拟节点记录父节点、兄弟节点、子节点，形成链表树，你可以从任意顶点遍历到任意子节点，并返回。
+Virtual DOM使用栈来调度需要更新的内容，中间无法中断、暂停。
+
+Fiber支持中断，在浏览器渲染帧里面分片执行更新任务。
+Fiber结构让虚拟节点记录父节点、兄弟节点、子节点，形成**链表树**，你可以从任意顶点遍历到任意子节点，并返回。
 Fiber的分片操作使用requestAnimationFrame(高优先级任务)和requestIdleCallback(低优先级任务)
 Fiber对任务的执行优先级进行标记，高优先级的任务可以先执行，实现架构上的无阻塞
 
