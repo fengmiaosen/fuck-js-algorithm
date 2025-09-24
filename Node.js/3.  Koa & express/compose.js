@@ -71,8 +71,16 @@ function composeSimple(middlewares) {
 
         function dispatch(i) {
             const fn = middlewares[i];
-            if (!fn) return;
 
+            if (i === middleware.length) fn = next
+
+            // 当 fn 为空的时候，就会开始执行 next() 后面部分的代码
+            if (!fn) return Promise.resolve()
+
+            // 执行中间件，留意这两个参数，都是中间件的传参，第一个是上下文，第二个是 next 函数
+            // 也就是说执行 next 的时候也就是调用 dispatch 函数的时候
+            // bind 方法会创建一个新的函数，当这个新函数被调用时，它的 this 关键字会被设置为 bind() 的第一个参数，而其余参数会作为插入到传入绑定函数的参数前的参数。
+            // 参考 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
             return fn(ctx, dispatch.bind(null, i + 1));
         }
     }
@@ -94,7 +102,7 @@ let mw3 = async function (ctx, next) {
 }
 
 function use(mw) {
-  middleware.push(mw);
+    middleware.push(mw);
 }
 
 use(mw1);

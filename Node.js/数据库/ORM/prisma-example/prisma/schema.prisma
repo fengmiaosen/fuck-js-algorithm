@@ -1,0 +1,233 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 用户模型
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  firstName String?
+  lastName  String?
+  avatar    String?
+  bio       String?  @db.Text
+  isActive  Boolean  @default(true)
+  role      UserRole @default(USER)
+  
+  // 时间戳
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  lastLogin DateTime?
+
+  // 关系
+  posts     Post[]
+  comments  Comment[]
+  likes     Like[]
+  follows   Follow[] @relation("UserFollows")
+  followers Follow[] @relation("UserFollowers")
+  profile   Profile?
+
+  @@map("users")
+}
+
+// 用户角色枚举
+enum UserRole {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+// 用户资料
+model Profile {
+  id          String    @id @default(cuid())
+  userId      String    @unique
+  website     String?
+  location    String?
+  birthDate   DateTime?
+  phoneNumber String?
+  socialLinks Json?     // 存储社交媒体链接
+  preferences Json?     // 用户偏好设置
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 关系
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("profiles")
+}
+
+// 文章模型
+model Post {
+  id          String      @id @default(cuid())
+  title       String
+  slug        String      @unique
+  content     String      @db.Text
+  excerpt     String?
+  coverImage  String?
+  published   Boolean     @default(false)
+  publishedAt DateTime?
+  viewCount   Int         @default(0)
+  likeCount   Int         @default(0)
+  
+  // 作者关系
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  
+  // 分类关系
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id])
+  
+  // 时间戳
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 关系
+  comments Comment[]
+  likes    Like[]
+  tags     PostTag[]
+
+  @@map("posts")
+}
+
+// 分类模型
+model Category {
+  id          String  @id @default(cuid())
+  name        String  @unique
+  slug        String  @unique
+  description String?
+  color       String? // 分类颜色
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 关系
+  posts Post[]
+
+  @@map("categories")
+}
+
+// 标签模型
+model Tag {
+  id    String @id @default(cuid())
+  name  String @unique
+  color String?
+  
+  createdAt DateTime @default(now())
+
+  // 关系
+  posts PostTag[]
+
+  @@map("tags")
+}
+
+// 文章标签关联表
+model PostTag {
+  postId String
+  tagId  String
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+  @@map("post_tags")
+}
+
+// 评论模型
+model Comment {
+  id      String @id @default(cuid())
+  content String @db.Text
+  
+  // 作者关系
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  
+  // 文章关系
+  postId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  
+  // 父评论关系（支持嵌套评论）
+  parentId String?
+  parent   Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies  Comment[] @relation("CommentReplies")
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("comments")
+}
+
+// 点赞模型
+model Like {
+  id String @id @default(cuid())
+  
+  // 用户关系
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // 文章关系
+  postId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+
+  // 确保用户对同一篇文章只能点赞一次
+  @@unique([userId, postId])
+  @@map("likes")
+}
+
+// 关注关系模型
+model Follow {
+  id String @id @default(cuid())
+  
+  // 关注者
+  followerId String
+  follower   User   @relation("UserFollows", fields: [followerId], references: [id], onDelete: Cascade)
+  
+  // 被关注者
+  followingId String
+  following   User    @relation("UserFollowers", fields: [followingId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+
+  // 确保不能重复关注
+  @@unique([followerId, followingId])
+  @@map("follows")
+}
+
+// 系统设置模型
+model Setting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value Json
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("settings")
+}
+
+// 审计日志模型
+model AuditLog {
+  id       String @id @default(cuid())
+  action   String // CREATE, UPDATE, DELETE
+  table    String // 表名
+  recordId String // 记录ID
+  oldData  Json?  // 旧数据
+  newData  Json?  // 新数据
+  userId   String? // 操作用户ID
+  
+  createdAt DateTime @default(now())
+
+  @@map("audit_logs")
+}
