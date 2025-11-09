@@ -1,2 +1,2 @@
 
-<!-- https://reactnative.dev/architecture/threading-model -->
+https://reactnative.dev/architecture/fabric-renderer

@@ -2650,6 +2650,7 @@ const InterviewCodingQuestions = {
   },
   
   // 2. 实现防抖和节流
+  // 防抖
   debounce(func, delay) {
     let timeoutId;
     return function (...args) {
@@ -2658,6 +2659,7 @@ const InterviewCodingQuestions = {
     };
   },
   
+  // 截流
   throttle(func, delay) {
     let lastCall = 0;
     return function (...args) {

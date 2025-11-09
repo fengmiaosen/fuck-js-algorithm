@@ -11,7 +11,7 @@ JSI 是革命性的改变。它移除了旧的异步消息队列桥接机制。
 · 打破隔离：这意味着 JavaScript 和原生代码现在可以同步通信，无需序列化。JavaScript 可以直接调用原生方法，反之亦然。
 · 引擎无关：JSI 是抽象层，不依赖特定的 JS 引擎（如 JavaScriptCore）。这使得在未来使用 V8、Hermes 等引擎成为可能。Hermes 就是为新架构而优化的引擎。
 
-1. Fabric - 新的渲染系统
+2. Fabric - 新的渲染系统
 
 Fabric 是建立在 JSI 之上的新 UI 架构。
 
@@ -19,7 +19,7 @@ Fabric 是建立在 JSI 之上的新 UI 架构。
 · 减少序列化：数据不再需要被序列化为 JSON，大大减少了通信开销。
 · 优先级和并发：Fabric 支持渲染中断和优先级调度，为 React 18 的并发特性（如 Suspense）提供了原生支持。
 
-1. TurboModules - 新的原生模块系统
+3. TurboModules - 新的原生模块系统
 
 TurboModules 是旧原生模块系统的升级。
 

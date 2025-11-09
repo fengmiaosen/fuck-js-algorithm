@@ -1,0 +1,1 @@
+https://github.com/ChromeDevTools/chrome-devtools-mcp

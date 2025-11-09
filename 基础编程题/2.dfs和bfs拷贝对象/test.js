@@ -11,6 +11,7 @@ function cloneObj(obj, map = new WeakMap()) {
     // 处理数组和普通对象
     const newObj = Array.isArray(obj) ? [] : {};
     map.set(obj, newObj);
+    
     const keys = Object.keys(obj);
     for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
