@@ -1,4 +1,5 @@
 [datadog - Modern monitoring & security](https://www.datadoghq.com/)
+[Datadog —— 现代监控与安全平台](https://www.datadoghq.com/)
 
 Datadog 是一款功能强大的**可观察性平台（Observability Platform）**，它将监控、日志管理和追踪功能集成在一个统一的平台中。它的核心目标是帮助开发、运维和业务团队了解其应用程序和基础设施的运行状况，快速发现并解决问题。
 
