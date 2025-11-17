@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="240" viewBox="0 0 640 240">
+  <defs>
+    <style>
+      .t{font: 12px sans-serif; fill:#333}
+      .ax{stroke:#aaa;stroke-width:1}
+      .bar1{fill:#bbb}
+      .bar2{fill:#2a7ade}
+      .bar3{fill:#cc3333}
+    </style>
+  </defs>
+  <rect x="20" y="20" width="600" height="200" rx="8" ry="8" fill="#fafafa" stroke="#ddd" />
+  <text class="t" x="40" y="40">稳态内存（越短越好）</text>
+  <rect class="bar1" x="40" y="60" width="220" height="20" />
+  <text class="t" x="270" y="75">经典 CRDT</text>
+  <rect class="bar2" x="40" y="90" width="60" height="20" />
+  <text class="t" x="110" y="105">Eg-walker</text>
+  <text class="t" x="40" y="135">加载时间（越短越好）</text>
+  <rect class="bar1" x="40" y="155" width="260" height="20" />
+  <text class="t" x="310" y="170">经典 CRDT</text>
+  <rect class="bar2" x="40" y="185" width="50" height="20" />
+  <text class="t" x="100" y="200">Eg-walker</text>
+  <title>性能示意（非原始图）</title>
+  <desc>相对差异示意以说明论文的数量级结论。</desc>
+</svg>

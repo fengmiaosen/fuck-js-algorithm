@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="280" viewBox="0 0 640 280">
+  <defs>
+    <style>
+      .n{fill:#fff;stroke:#333;stroke-width:1.2}
+      .d{fill:#ffecec;stroke:#cc3333;stroke-width:1.2}
+      .t{font: 12px sans-serif; fill:#333}
+      .a{stroke:#888;stroke-width:1.2;marker-end:url(#arr)}
+      .w{stroke:#2a7ade;stroke-width:2;stroke-dasharray:5,4;marker-end:url(#arr)}
+    </style>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888" />
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="600" height="240" rx="8" ry="8" fill="#fafafa" stroke="#ddd" />
+  <rect class="n" x="60" y="60" width="120" height="40" rx="6" />
+  <text class="t" x="70" y="85">Insert("A") id:a1</text>
+  <rect class="n" x="240" y="60" width="120" height="40" rx="6" />
+  <text class="t" x="250" y="85">Insert("B") id:b1</text>
+  <rect class="n" x="420" y="60" width="120" height="40" rx="6" />
+  <text class="t" x="430" y="85">Insert("C") id:c1</text>
+  <line class="a" x1="180" y1="80" x2="240" y2="80" />
+  <line class="a" x1="360" y1="80" x2="420" y2="80" />
+  <rect class="d" x="240" y="150" width="120" height="40" rx="6" />
+  <text class="t" x="250" y="175">Delete(id:a1)</text>
+  <line class="a" x1="300" y1="150" x2="120" y2="100" />
+  <path class="w" d="M 80 120 C 140 40, 260 40, 300 120 S 480 40, 520 120" fill="none" />
+  <text class="t" x="90" y="130">Walker</text>
+  <text class="t" x="60" y="220">输出文本：B C</text>
+  <title>事件图示意（非原始图）</title>
+  <desc>重绘论文关键概念：插入/删除事件与行走合并。</desc>
+</svg>
