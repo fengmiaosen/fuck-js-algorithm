@@ -98,8 +98,8 @@ class RangeList {
     print() {
         const list = this.list;
         let res = '';
-        for (let item in list) {
-            res += `[${list[item].toString()})`
+        for (let i = 0; i < list.length; i++) {
+            res += `[${list[i].toString()}]`
         }
         console.log(res);
         return res;
