@@ -37,11 +37,25 @@
 
 ## 工程实践建议
 
-- 心跳与保活：WebSocket 使用 Ping/Pong 及空闲断线检测，结合 `bufferedAmount` 做背压；SSE 通过注释行 `: keepalive` 保持连接，服务端控制发送速率与队列。
-- 鉴权与安全：WebSocket 在握手阶段校验 `Origin`，令牌通过 Cookie、子协议或查询参数；SSE 直接使用 `Authorization`/`Cookie`，沿用既有授权流程。
-- 容错与重试：WebSocket 采用指数退避重连，必要时支持会话恢复与未确认消息重放；SSE 利用 `id:` 与 `Last-Event-ID` 恢复断点，并用 `retry:` 指定重试间隔。
-- 伸缩与代理：WebSocket 在网关层进行连接路由与限流，通常需要粘性会话或集中式会话；SSE 复用反向代理与 HTTP/2，按连接数和带宽分层限流。
-- 组合策略：下行用 SSE、上行用 HTTP；优先 WebSocket，失败自动回退 SSE 提升可达性。
+- 心跳与保活：
+    WebSocket 使用 Ping/Pong 及空闲断线检测，结合 `bufferedAmount` 做背压；
+    SSE 通过注释行 `: keepalive` 保持连接，服务端控制发送速率与队列。
+
+- 鉴权与安全：
+    WebSocket 在握手阶段校验 `Origin`，令牌通过 Cookie、子协议或查询参数；
+    SSE 直接使用 `Authorization`/`Cookie`，沿用既有授权流程。
+
+- 容错与重试：
+    WebSocket 采用指数退避重连，必要时支持会话恢复与未确认消息重放；
+    SSE 利用 `id:` 与 `Last-Event-ID` 恢复断点，并用 `retry:` 指定重试间隔。
+
+- 伸缩与代理：
+    WebSocket 在网关层进行连接路由与限流，通常需要粘性会话或集中式会话；
+    SSE 复用反向代理与 HTTP/2，按连接数和带宽分层限流。
+
+- 组合策略：
+    下行用 SSE、上行用 HTTP；
+    优先 WebSocket，失败自动回退 SSE 提升可达性。
 
 ## 快速结论
 

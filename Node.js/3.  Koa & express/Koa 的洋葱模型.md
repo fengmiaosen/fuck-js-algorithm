@@ -1,5 +1,9 @@
 Koa 的洋葱模型指的是以 next() 函数为分割点，先由外到内执行 Request 的逻辑，再由内到外执行 Response 的逻辑。通过洋葱模型，将多个中间件之间通信等变得更加可行和简单。其实现的原理并不是很复杂，主要是 compose 方法。
 
+---
+
+Koa's onion model refers to using the `next()` function as a dividing point, first executing the Request logic from the outside to the inside, and then executing the Response logic from the inside to the outside. Through the onion model, communication between multiple middlewares becomes more feasible and simple. The principle of its implementation is not very complicated, mainly through the `compose` method.
+
 
 ## 洋葱模型
 

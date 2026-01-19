@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f9fbff"/>
+      <stop offset="1" stop-color="#f4f7ff"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#5b6af7"/>
+    </marker>
+    <style>
+      text{font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif; fill:#1b2430}
+      .title{font-size:28px;font-weight:700}
+      .label{font-size:18px;font-weight:600}
+      .note{font-size:14px;fill:#4b5563}
+      .box{rx:12;ry:12;stroke-width:2}
+      .box-blue{fill:#eaf2ff;stroke:#5b6af7}
+      .box-purple{fill:#efe8ff;stroke:#7c3aed}
+      .box-green{fill:#e8fff1;stroke:#10b981}
+      .box-orange{fill:#fff2e5;stroke:#fb923c}
+      .box-gray{fill:#f3f4f6;stroke:#9ca3af}
+      .box-yellow{fill:#fffbe6;stroke:#f59e0b}
+      .flow{stroke:#5b6af7;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .flow-muted{stroke:#9ca3af;stroke-width:2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="900" fill="url(#bg)"/>
+
+  <text x="700" y="56" text-anchor="middle" class="title">CMS + JAMstack 架构总览图</text>
+
+  <rect class="box box-gray" x="60" y="160" width="200" height="110"/>
+  <text class="label" x="160" y="200" text-anchor="middle">内容编辑者</text>
+  <text class="note" x="160" y="225" text-anchor="middle">撰写与发布内容</text>
+
+  <rect class="box box-blue" x="300" y="120" width="260" height="180"/>
+  <text class="label" x="430" y="155" text-anchor="middle">Headless CMS</text>
+  <text class="note" x="430" y="185" text-anchor="middle">内容建模 · 媒体管理</text>
+  <text class="note" x="430" y="210" text-anchor="middle">GraphQL / REST API</text>
+  <text class="note" x="430" y="235" text-anchor="middle">Webhook · 预览模式</text>
+
+  <rect class="box box-purple" x="620" y="120" width="220" height="160"/>
+  <text class="label" x="730" y="155" text-anchor="middle">API 层</text>
+  <text class="note" x="730" y="185" text-anchor="middle">GraphQL / REST</text>
+  <text class="note" x="730" y="210" text-anchor="middle">鉴权 · 分页 · 过滤</text>
+
+  <rect class="box box-green" x="620" y="320" width="260" height="180"/>
+  <text class="label" x="750" y="355" text-anchor="middle">构建层（SSG / ISR）</text>
+  <text class="note" x="750" y="385" text-anchor="middle">Next.js · Nuxt · Gatsby · Astro</text>
+  <text class="note" x="750" y="410" text-anchor="middle">拉取内容 · 模板渲染 · 生成静态</text>
+
+  <rect class="box box-gray" x="620" y="540" width="260" height="140"/>
+  <text class="label" x="750" y="575" text-anchor="middle">CI / CD</text>
+  <text class="note" x="750" y="605" text-anchor="middle">GitHub Actions · Vercel · Netlify</text>
+  <text class="note" x="750" y="630" text-anchor="middle">构建 · 测试 · 部署</text>
+
+  <rect class="box box-orange" x="950" y="260" width="260" height="220"/>
+  <text class="label" x="1080" y="295" text-anchor="middle">CDN & Edge</text>
+  <text class="note" x="1080" y="325" text-anchor="middle">全球分发 · 缓存 · 图片优化</text>
+  <text class="note" x="1080" y="350" text-anchor="middle">Edge Middleware · A/B 测试</text>
+
+  <rect class="box box-yellow" x="1220" y="120" width="160" height="100"/>
+  <text class="label" x="1300" y="155" text-anchor="middle">用户浏览器</text>
+  <text class="note" x="1300" y="180" text-anchor="middle">极速访问</text>
+
+  <rect class="box box-gray" x="950" y="520" width="260" height="140"/>
+  <text class="label" x="1080" y="555" text-anchor="middle">Serverless / BFF</text>
+  <text class="note" x="1080" y="585" text-anchor="middle">鉴权 · 支付 · 表单 · 搜索</text>
+
+  <rect class="box box-gray" x="300" y="340" width="260" height="160"/>
+  <text class="label" x="430" y="375" text-anchor="middle">外部数据/服务</text>
+  <text class="note" x="430" y="405" text-anchor="middle">第三方 API · 数据库</text>
+
+  <path class="flow" d="M260,215 C280,215 300,215 300,215"/>
+  <text class="note" x="280" y="200">内容提交</text>
+
+  <path class="flow" d="M560,210 C590,210 610,200 620,200"/>
+  <text class="note" x="590" y="190" text-anchor="middle">API 暴露</text>
+
+  <path class="flow" d="M550,240 C580,280 620,320 620,320"/>
+  <text class="note" x="585" y="300" text-anchor="middle">Webhook / 再生成</text>
+
+  <path class="flow" d="M730,280 C730,300 750,320 750,320"/>
+  <text class="note" x="770" y="300">内容读取</text>
+
+  <path class="flow" d="M750,500 C750,520 750,540 750,540"/>
+  <text class="note" x="770" y="520">产物提交</text>
+
+  <path class="flow" d="M880,600 C900,600 920,600 940,600"/>
+  <text class="note" x="910" y="585" text-anchor="middle">部署</text>
+
+  <path class="flow" d="M880,410 C910,390 930,370 950,360"/>
+  <text class="note" x="915" y="370">静态资源</text>
+
+  <path class="flow" d="M1210,370 C1220,330 1240,300 1280,220"/>
+  <text class="note" x="1250" y="320">边缘加速</text>
+
+  <path class="flow" d="M1210,600 C1230,600 1250,600 1300,600"/>
+  <path class="flow" d="M1300,220 C1300,260 1290,300 1210,360"/>
+  <text class="note" x="1305" y="585">API 调用</text>
+
+  <path class="flow-muted" d="M430,500 C500,470 560,450 620,430"/>
+  <text class="note" x="520" y="470" text-anchor="middle">合并外部数据</text>
+
+  <rect class="box box-gray" x="300" y="540" width="260" height="140"/>
+  <text class="label" x="430" y="575" text-anchor="middle">预览模式</text>
+  <text class="note" x="430" y="605" text-anchor="middle">CMS→Next.js 预览草稿</text>
+
+  <path class="flow-muted" d="M560,610 C590,610 610,600 620,580"/>
+  <text class="note" x="590" y="595" text-anchor="middle">编辑者预览</text>
+
+  <rect class="box box-gray" x="60" y="320" width="200" height="100"/>
+  <text class="label" x="160" y="355" text-anchor="middle">版本与审核</text>
+  <text class="note" x="160" y="380" text-anchor="middle">草稿 · 审核 · 发布</text>
+
+  <path class="flow-muted" d="M260,370 C280,370 300,370 300,370"/>
+  <text class="note" x="280" y="355">发布流程</text>
+
+  <text class="note" x="700" y="860" text-anchor="middle">整体流程：内容→CMS→API→SSG/ISR→CI/CD→CDN/Edge→用户浏览器；动态能力由 Serverless/BFF 提供</text>
+</svg>

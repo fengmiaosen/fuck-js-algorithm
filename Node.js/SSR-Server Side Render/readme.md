@@ -1,7 +1,7 @@
 # SSR vs CSR（前端开发视角）
 
 ## 核心定义
-- SSR（Server-Side Rendering）：服务器生成完整 HTML，浏览器接收后进行“水合”（绑定事件、接管状态）。
+- SSR（Server-Side Rendering）：服务器生成完整 HTML，浏览器接收后进行“水合 (Hydration)”（绑定事件、接管状态）。
 - CSR（Client-Side Rendering）：服务器返回基础 HTML/空壳，数据获取与 UI 渲染在浏览器端完成，首屏依赖下载与执行前端 JS。
 
 ## 用户体验与指标

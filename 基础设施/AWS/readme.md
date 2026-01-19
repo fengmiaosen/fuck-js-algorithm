@@ -7,7 +7,7 @@ AWS（Amazon Web Services）提供了广泛的基础设施服务，可以帮助�
 计算服务是运行应用程序代码的地方。
 
 * **Amazon EC2 (Elastic Compute Cloud)**：这是最基础的计算服务，提供可扩展的虚拟机，称为“实例”。你可以完全控制这些实例，包括操作系统、安全补丁和软件安装。它就像是你在云端的虚拟服务器。
-* **AWS Lambda**：这是一种“无服务器”（serverless）计算服务。你只需上传代码，Lambda 就会自动为你运行，无需管理任何服务器。它特别适合处理事件驱动的任务，例如处理新上传的图片或响应 API 请求。
+* **AWS Lambda**：这是一种“**无服务器**”（serverless）计算服务。你只需上传代码，Lambda 就会自动为你运行，无需管理任何服务器。它特别适合处理**事件驱动的任务**，例如处理新上传的图片或响应 API 请求。
 * **Amazon ECS / EKS (Elastic Container Service / Kubernetes Service)**：如果你使用容器（如 Docker），这些服务可以帮助你轻松地部署、管理和扩展容器化的应用程序。ECS 是 AWS 原生的容器编排服务，而 EKS 则是托管的 Kubernetes 服务。
 
 ---
