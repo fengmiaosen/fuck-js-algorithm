@@ -40,8 +40,12 @@ function multiRequest(urls = [], maxNum) {
                 console.log('catch err!', err)
                 result[current] = err
             }).finally(() => {
-                //还有未完成，递归；
-                if (current < sum) {
+                //检查是否所有请求都已完成
+                const allCompleted = result.every(item => item !== false);
+                if (allCompleted) {
+                    resolve(result);
+                } else if (count < sum) {
+                    //还有未完成，递归；
                     next()
                 }
             })

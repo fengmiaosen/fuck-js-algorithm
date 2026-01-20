@@ -19,8 +19,9 @@ function throttle(fn, delay) {
     let timer = null;
     let lastTime = 0;
 
-    return (...args) => {
-
+    return function(...args) {
+        // 保存正确的this上下文
+        const context = this;
         const nowTime = Date.now();
         const gapTime = nowTime - lastTime;
 
@@ -32,7 +33,7 @@ function throttle(fn, delay) {
                 // 计时器回调函数执行完毕，更新lastTime用于下一次比较
                 lastTime = Date.now();
 
-                fn.apply(this, args);
+                fn.apply(context, args);
             }, delay - gapTime);
 
             return;
@@ -40,7 +41,7 @@ function throttle(fn, delay) {
 
         //第一次
         lastTime = nowTime;
-        fn.apply(this, args);
+        fn.apply(context, args);
         timer && clearTimeout(timer);
 
     }
