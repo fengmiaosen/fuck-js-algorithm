@@ -139,6 +139,41 @@ export default function Loading() {
 
 ---
 
+## 6. 优缺点对比 (Pros & Cons)
+
+### Pages Router 的优点
+
+- **概念简单**：文件即路由，`getServerSideProps` / `getStaticProps` 一步到位，心智负担小，上手快。
+- **生态成熟**：大量旧项目、教程与第三方库天然兼容（多数老库按客户端组件编写，无需适配）。
+- **调试直观**：组件代码均在客户端执行，报错定位简单。
+
+### Pages Router 的缺点
+
+- **无 RSC**：所有组件代码（包括 import 的库）都会打包进客户端 bundle，JS 体积大。
+- **数据获取粒度粗**：只能页面级取数（`getServerSideProps` 等），数据需从页面 props 层层下钻，组件无法自己取数。
+- **布局能力弱**：仅有 `_app.js` / `_document.js` 全局布局；嵌套布局需手动实现，且导航时布局组件重新挂载、状态丢失。
+- **整页阻塞渲染**：不支持流式渲染，慢接口会拖慢整页 TTFB；loading 状态需要手动实现。
+- **官方重心转移**：处于维护模式，新特性（RSC、Server Actions 等）只进 App Router。
+
+### App Router 的优点
+
+- **RSC 默认**：服务端组件零客户端 JS，bundle 显著减小；服务端组件可直接访问数据库、文件系统等后端资源。
+- **组件级数据获取**：async 组件内直接 `fetch`，天然并行，缓存与 revalidate 粒度可精确控制。
+- **强大的布局系统**：嵌套 `layout.js`，导航时布局不重新挂载、状态保留；`loading.js` / `error.js` 开箱即用。
+- **流式渲染 + Suspense**：先出静态壳、再流式补动态内容，TTFB / FCP 更优。
+- **高级路由能力**：并行路由（parallel routes）、拦截路由（intercepting routes）、route handlers、Server Actions。
+- **官方未来方向**：持续获得新特性与优化。
+
+### App Router 的缺点
+
+- **学习曲线陡**：RSC 边界、`'use client'`、Suspense、多层缓存体系（Data Cache / Router Cache / Full Route Cache / Request Memoization）概念众多。
+- **心智负担**：需要时刻区分服务端/客户端组件；服务端 → 客户端传递的 props 必须可序列化（不能传函数、class 实例等）。
+- **生态兼容成本**：多数老库只能以客户端组件方式使用，需要 `'use client'` 包裹或动态导入，滥用会抵消 RSC 的包体积优势。
+- **缓存行为复杂且变动频繁**：Next.js 13 → 14 → 15 多次调整缓存默认值（如 Next 15 中 `fetch` 默认不再缓存），升级容易踩坑。
+- **调试成本更高**：RSC 在服务端执行，错误定位比纯客户端渲染更复杂。
+
+---
+
 ## 总结与选择
 
 | 方面 | Pages Router | App Router |
